@@ -1,0 +1,39 @@
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+       return find(matrix);
+    }
+    static List<Integer> find(int[][] arr){
+        if (arr.length == 0 || arr[0].length == 0) {
+    return new ArrayList<>();
+}
+
+        int rs=0;
+       int re =arr.length-1;
+       int cs=0;
+       int ce=arr[0].length-1;
+       List<Integer> ans=new ArrayList<>();
+       while(rs<=re&&cs<=ce){
+        for(int i=cs;i<=ce;i++){
+            ans.add(arr[rs][i]);
+        }
+        rs++;
+        for(int i=rs;i<=re;i++){
+            ans.add(arr[i][ce]);
+        }
+        ce--;
+        if(rs<=re){
+            for(int i=ce;i>=cs;i--){
+                ans.add(arr[re][i]);
+            }
+            re--;
+        }
+        if(cs<=ce){
+            for(int i=re;i>=rs;i--){
+                ans.add(arr[i][cs]);
+            }
+            cs++;
+        }
+       }
+       return ans;
+    }
+}
