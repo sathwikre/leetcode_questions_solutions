@@ -1,0 +1,21 @@
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+       return find(nums);
+
+    }
+    static List<List<Integer>> find(int[] arr){
+        List<List<Integer>> outer=new ArrayList<>();
+        outer.add(new ArrayList<>());
+        for(int n:arr){
+            int i=outer.size();
+            for(int j=0;j<i;j++){
+                List<Integer> inner=new ArrayList<>(outer.get(j));
+                inner.add(n);
+                outer.add(inner);
+
+            }
+
+        }
+        return outer;
+    }
+}
