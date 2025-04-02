@@ -1,0 +1,28 @@
+class Solution {
+    public long maximumTripletValue(int[] nums) {
+        return find(nums);
+    }
+    static long find(int[] arr){
+        if(arr.length<3){
+            return 0;
+        }
+        List<Long> ans=new ArrayList<>();
+        for(int i=0;i<arr.length-2;i++){
+            for(int j=i+1;j<arr.length-1;j++){
+            for(int k=j+1;k<arr.length;k++){
+            ans.add((long)(arr[i]-arr[j])*arr[k]);
+           }
+        }
+        }
+      long max=0;
+      for(int i=0;i<ans.size();i++){
+          if(max<ans.get(i)){
+              max=ans.get(i);
+          }
+      }
+      if(max<0){
+          return 0;
+      }
+      return max;
+    }
+}
