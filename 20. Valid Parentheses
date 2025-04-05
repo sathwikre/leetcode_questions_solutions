@@ -1,0 +1,23 @@
+class Solution {
+    public boolean isValid(String s) {
+        return find(s);
+    }
+    static boolean find(String s){
+        Stack<Character> stack = new Stack<>();
+        for(char a: s.toCharArray()){
+            if(a=='('||a=='{'||a=='['){
+                stack.push(a);
+            }else {
+                if (stack.isEmpty()) return false;
+
+                char top = stack.pop();
+                if ((a == ')' && top != '(') ||
+                    (a == '}' && top != '{') ||
+                    (a == ']' && top != '[')) {
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+}
