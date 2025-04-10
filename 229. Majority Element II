@@ -1,0 +1,23 @@
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+        return find(nums);
+
+    }
+    static List<Integer> find(int[] arr){
+    HashSet<Integer> ans=new HashSet<>();
+        for(int i=0;i<arr.length;i++){
+            int count=0;
+            for(int j=0;j<arr.length;j++){
+                if(arr[i]==arr[j]){
+                    count++;
+                }
+            }
+            if(count>arr.length/3){
+                if(!ans.contains(arr[i])){
+                    ans.add(arr[i]);
+                }
+            }
+        }
+         return new ArrayList<>(ans);
+    }
+}
