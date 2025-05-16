@@ -1,0 +1,15 @@
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        return find(nums,val);
+    }
+    static int find(int[] arr,int val){
+        int k=0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]!=val){
+               arr[k] =arr[i];
+               k++;
+            }
+        }
+        return k;
+    }
+}
