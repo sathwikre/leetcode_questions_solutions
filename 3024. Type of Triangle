@@ -1,0 +1,17 @@
+class Solution {
+    public String triangleType(int[] nums) {
+        Arrays.sort(nums);
+        return find(nums);
+    }
+    static String find(int[] arr){
+        if(arr[0]+arr[1]>arr[2]){
+            if(arr[0]==arr[1]&&arr[1]==arr[2]){
+                return "equilateral";
+            }else if(arr[0]!=arr[1]&&arr[1]!=arr[2]){
+                return "scalene";
+            }
+            return "isosceles";
+        }
+        return "none";
+    }
+}
