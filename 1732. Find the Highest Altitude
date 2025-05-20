@@ -1,0 +1,14 @@
+class Solution {
+    public int largestAltitude(int[] gain) {
+        return find(gain);
+    }
+    static int find(int[] arr){
+        int[] ans=new int[arr.length+1];
+        ans[0]=0;
+        for(int i=1;i<ans.length;i++){
+            ans[i]=ans[i-1]+arr[i-1];
+        }
+        Arrays.sort(ans);
+        return ans[ans.length-1];
+    }
+}
