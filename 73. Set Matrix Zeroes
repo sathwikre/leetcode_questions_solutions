@@ -1,0 +1,33 @@
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        find(matrix);
+    }
+    static void find(int[][] arr){
+        ArrayList<ArrayList<Integer>> ans=new ArrayList<>();
+        for (int i = 0; i < arr.length; i++) {
+            for(int j=0;j<arr[0].length;j++){
+
+                if(arr[i][j]==0){
+                    ArrayList<Integer> inner=new ArrayList<>();
+                   inner.add(i);
+                   inner.add(j);
+                   ans.add(inner);
+                }
+
+            }
+
+        }
+
+        for (int i = 0; i <ans.size() ; i++) {
+            int row=ans.get(i).get(0);
+            int col=ans.get(i).get(1);
+            for(int w=0;w<arr[0].length;w++){
+                arr[row][w]=0;
+            }
+            for(int h=0;h< arr.length;h++){
+                arr[h][col]=0;
+            }
+
+        }
+    }
+}
