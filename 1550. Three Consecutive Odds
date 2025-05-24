@@ -1,0 +1,15 @@
+class Solution {
+    public boolean threeConsecutiveOdds(int[] arr) {
+        return find(arr);
+    }
+    static boolean find(int[] arr){
+        int s=0;
+        while(s<=arr.length-3){
+            if(arr[s]%2!=0&&arr[s+1]%2!=0&&arr[s+2]%2!=0){
+               return true;
+            }
+            s++;
+        }
+        return false;
+    }
+}
