@@ -1,0 +1,16 @@
+class Solution {
+    public void reverseString(char[] s) {
+        find(s);
+    }
+    static void find(char[] arr){
+        int s=0;
+        int e=arr.length-1;
+        while(s<arr.length/2){
+            char temp=arr[s];
+            arr[s]=arr[e];
+            arr[e]=temp;
+            s++;
+            e--;
+        }
+    }
+}
