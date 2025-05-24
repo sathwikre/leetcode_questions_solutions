@@ -1,0 +1,22 @@
+class Solution {
+    public int maximumPopulation(int[][] logs) {
+        return find(logs);
+    }
+    static int find(int[][] arr){
+        int[] ans=new int[101];
+        for(int[] val:arr){
+            int row=val[0]-1950;
+            int col=val[1]-1950;
+            for(int i=row;i<col;i++){
+                ans[i]++;
+            }
+        }
+        int max=0;
+        for(int k=1;k<ans.length;k++){
+            if(ans[k]>ans[max]){
+                max=k;
+            }
+        }
+        return max+1950;
+    }
+}
