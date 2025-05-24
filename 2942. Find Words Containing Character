@@ -1,0 +1,19 @@
+class Solution {
+    public List<Integer> findWordsContaining(String[] words, char x) {
+        return find(words,x);
+    }
+    static List<Integer> find(String[] arr,char ch){
+        List<Integer> ans=new ArrayList<>();
+        for (int i = 0; i <arr.length ; i++) {
+            String s=arr[i].toLowerCase();
+            for (int j = 0; j < s.length(); j++) {
+                if(s.charAt(j)==ch){
+                    if(!ans.contains(i)){
+                        ans.add(i);
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+}
