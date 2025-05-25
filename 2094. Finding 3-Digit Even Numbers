@@ -1,0 +1,35 @@
+class Solution {
+    public int[] findEvenNumbers(int[] digits) {
+       return find(digits) ;
+    }
+    static int[] find(int[] arr) {
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        for (int i = 100; i <= 998; i += 2) { 
+            int[] digits = {i / 100, (i / 10) % 10, i % 10};
+            ArrayList<Integer> available = new ArrayList<>();
+            for (int d : arr) available.add(d);
+
+            boolean valid = true;
+            for (int d : digits) {
+                if (available.contains(d)) {
+                    available.remove((Integer) d); 
+                } else {
+                    valid = false;
+                    break;
+                }
+            }
+
+            if (valid) {
+                ans.add(i);
+            }
+        }
+
+        int[] result = new int[ans.size()];
+        for (int i = 0; i < ans.size(); i++) {
+            result[i] = ans.get(i);
+        }
+
+        return result;
+    }
+}
