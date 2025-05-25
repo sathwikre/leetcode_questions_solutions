@@ -1,0 +1,32 @@
+class Solution {
+    public String reverseStr(String s, int k) {
+       return find(s, k);
+    }
+
+    static String find(String s, int k) {
+        char[] arr = s.toCharArray();
+        int i = 0;
+
+        while (i < arr.length) {
+        
+            int end = Math.min(i + k - 1, arr.length - 1);
+
+            int left = i, right = end;
+            while (left < right) {
+                char temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
+                left++;
+                right--;
+            }
+
+            i += 2 * k;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (char c : arr) {
+            sb.append(c);
+        }
+        return sb.toString();
+    }
+}
