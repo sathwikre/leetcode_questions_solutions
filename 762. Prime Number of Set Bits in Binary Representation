@@ -1,0 +1,43 @@
+class Solution {
+    public int countPrimeSetBits(int left, int right) {
+        return actual(left,right);
+    }
+    static int find(int n){
+        int count=0;
+        while(n>0){
+            if((n&1)==1){
+                count++;
+            }
+            n=n>>1;
+        }
+        return count;
+    }
+    static int  actual(int left,int right){
+        int[] arr=new int[right-left+1];
+        for(int i=left;i<=right;i++){
+            arr[i-left]=find(i);
+        }
+        return count(arr);
+    }
+    static int count(int[] arr){
+        int c=0;
+      
+        for(int i=0;i<arr.length;i++){
+              
+                if(isPrime(arr[i])){
+                    c++;
+                }
+        }
+        return c;
+        
+    }
+    static boolean isPrime(int n) {
+        if (n < 2) return false;
+
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) return false;
+        }
+
+        return true;
+    }
+}
