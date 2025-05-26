@@ -1,0 +1,27 @@
+class Solution {
+    public boolean isHappy(int n) {
+        return find(n);
+    }
+    static boolean find(int n){
+        HashSet<Integer> ans=new HashSet<>();
+        while(true){
+            if(!ans.contains(n)){
+                ans.add(n);
+            }else{
+                return false;
+            }
+            int w=0;
+            while(n>0){
+                int rem=n%10;
+                w+=rem*rem;
+                n=n/10;
+            }
+            if(w==1){
+                return true;
+            }
+            n=w;
+
+        }
+
+    }
+}
