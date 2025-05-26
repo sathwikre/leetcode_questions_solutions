@@ -1,0 +1,13 @@
+class Solution {
+    public int maxProduct(int[] nums) {
+        Arrays.sort(nums);
+        return find(nums);
+    }
+    static int find(int[] arr){
+        int s1=(arr[0]-1)*(arr[1]-1);
+        int s2=(arr[arr.length-1]-1)*(arr[arr.length-2]-1);
+        int max=Math.max(s1,s2);
+        return max;
+
+    }
+}
