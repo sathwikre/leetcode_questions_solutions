@@ -1,0 +1,17 @@
+class Solution {
+    public int minBitFlips(int start, int goal) {
+      return find(start,goal)  ;
+    }
+     static int find(int s,int g){
+        int count=0;
+        int xor=s^g;
+        while(xor>0){
+            int ss=xor&1;
+            if(ss==1){
+                count++;
+            }
+            xor=xor>>1;
+        }
+        return count;
+    }
+}
