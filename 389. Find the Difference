@@ -1,0 +1,20 @@
+class Solution {
+    public char findTheDifference(String s, String t) {
+        return find(s,t);
+    }
+    static char find(String s,String t){
+        char[] arr1=s.toCharArray();
+        char[] arr2=t.toCharArray();
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+        int s1=0;
+        int s2=0;
+        for(int i=0;i<arr1.length;i++){
+           s1=s1+arr1[i];
+        }
+        for(int j=0;j<arr2.length;j++){
+           s2=s2+arr2[j];
+        }
+        return (char)(s2-s1);
+    }
+}
