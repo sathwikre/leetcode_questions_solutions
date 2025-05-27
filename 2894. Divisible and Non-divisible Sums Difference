@@ -1,0 +1,31 @@
+class Solution {
+    public int differenceOfSums(int n, int m) {
+        return find(n, m);
+    }
+
+    static int find(int n, int m) {
+        int sum1 = 0; 
+        int sum2 = 0; 
+
+        ArrayList<Integer> arr1 = new ArrayList<>();
+        ArrayList<Integer> arr2 = new ArrayList<>();
+
+        for (int i = 1; i <= n; i++) {
+            if (i % m == 0) {
+                arr1.add(i); // divisible by m
+            } else {
+                arr2.add(i); // not divisible by m
+            }
+        }
+
+        for (int j = 0; j < arr1.size(); j++) {
+            sum1 += arr1.get(j);
+        }
+
+        for (int k = 0; k < arr2.size(); k++) {
+            sum2 += arr2.get(k);
+        }
+
+        return sum2 - sum1;
+    }
+}
