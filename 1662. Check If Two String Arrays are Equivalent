@@ -1,0 +1,19 @@
+class Solution {
+    public boolean arrayStringsAreEqual(String[] word1, String[] word2) {
+        return find(word1,word2);
+    }
+    static boolean find(String[] w1,String[] w2){
+        StringBuilder a1=new StringBuilder();
+        StringBuilder a2=new StringBuilder();
+        for(int i=0;i<w1.length;i++){
+            a1.append(w1[i]);
+        }
+        for(int i=0;i<w2.length;i++){
+            a2.append(w2[i]);
+        }
+        if(a1.toString().equals(a2.toString())){
+            return true;
+        }
+        return false;
+    }
+}
