@@ -1,0 +1,10 @@
+class Solution {
+    public int lengthOfLastWord(String s) {
+        s = s.strip().replaceAll("\\s+", " ");
+        return find(s);
+    }
+    static int find(String s){
+        String[] arr=s.split(" ");
+        return arr[arr.length-1].length();
+    }
+}
