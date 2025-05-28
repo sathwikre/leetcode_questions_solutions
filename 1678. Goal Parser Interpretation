@@ -1,0 +1,23 @@
+class Solution {
+    public String interpret(String command) {
+        return find(command);
+    }
+
+    static String find(String s) {
+        StringBuilder ans = new StringBuilder();
+        int i = 0;
+        while (i < s.length()) {
+            if (s.charAt(i) == 'G') {
+                ans.append('G');
+                i++;
+            } else if (s.charAt(i) == '(' && s.charAt(i + 1) == ')') {
+                ans.append('o');
+                i += 2;
+            } else if (s.charAt(i) == '(' && s.charAt(i + 1) == 'a' && s.charAt(i + 2) == 'l' && s.charAt(i + 3) == ')') {
+                ans.append("al");
+                i += 4;
+            }
+        }
+        return ans.toString();
+    }
+}
