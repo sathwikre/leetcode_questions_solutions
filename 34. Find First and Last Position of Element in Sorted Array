@@ -1,0 +1,33 @@
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        return find(nums, target);
+    }
+    static int[] find(int[] arr, int t) {
+        int[] ans = new int[2];
+        ans[0] = bs(arr, t, true);   
+        ans[1] = bs(arr, t, false);  
+        return ans;
+    }
+
+    static int bs(int[] arr, int t, boolean fs) {
+        int an = -1;
+        int s = 0;
+        int e = arr.length - 1;
+        while (s <= e) {
+            int m = s + (e - s) / 2;
+            if (arr[m] < t) {
+                s = m + 1;
+            } else if (arr[m] > t) {
+                e = m - 1;
+            } else {
+                an = m;
+                if (fs) {
+                    e = m - 1; 
+                } else {
+                    s = m + 1; 
+                }
+            }
+        }
+        return an;
+    }
+}
