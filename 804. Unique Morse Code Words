@@ -1,0 +1,21 @@
+class Solution {
+    public int uniqueMorseRepresentations(String[] words) {
+        return find(words);
+    }
+     static int find(String[] arr){
+        String[] c={".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        ArrayList<String> an=new ArrayList<>();
+        for (int i = 0; i < arr.length ; i++) {
+            String s=arr[i];
+            StringBuilder ans=new StringBuilder();
+            for (int j = 0; j < s.length(); j++) {
+                int ch=s.charAt(j);
+                ans.append(c[ch-97]);
+            }
+            if(!an.contains(ans.toString())){
+                an.add(ans.toString());
+            }
+        }
+       return an.size();
+    }
+}
