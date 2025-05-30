@@ -1,0 +1,25 @@
+class Solution {
+    public int smallestIndex(int[] nums) {
+        return find(nums);
+    }
+     static int find(int[] arr){
+        ArrayList<Integer> ans=new ArrayList<>();
+        for(int i=0;i< arr.length;i++){
+            int n=arr[i];
+            int sum=0;
+            while(n>0){
+                int rem=n%10;
+                sum+=rem;
+                n/=10;
+            }
+            if(sum==i){
+                ans.add(i);
+            }
+        }
+        if(ans.size()==0){
+            return -1;
+        }
+        int min= Collections.min(ans);
+        return min;
+    }
+}
