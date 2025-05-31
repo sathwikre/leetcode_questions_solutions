@@ -1,0 +1,31 @@
+class Solution {
+    public int[] relativeSortArray(int[] arr1, int[] arr2) {
+        return find(arr1,arr2);
+    }
+    static int[] find(int[] arr1,int[] arr2){
+        ArrayList<Integer> ans=new ArrayList<>();
+        ArrayList<Integer> a=new ArrayList<>();
+        for (int i = 0; i < arr2.length; i++) {
+            int val=arr2[i];
+            for (int j = 0; j < arr1.length; j++) {
+                if(arr1[j]==val){
+                    ans.add(arr1[j]);
+                }
+            }
+        }
+        for (int i = 0; i < arr1.length ; i++) {
+            if(!ans.contains(arr1[i])){
+                a.add((arr1[i]));
+            }
+        }
+        Collections.sort(a);
+        for (int i = 0; i < a.size(); i++) {
+            ans.add(a.get(i));
+        }
+        int[] aw=new int[ans.size()];
+        for (int i = 0; i <aw.length ; i++) {
+            aw[i]=ans.get(i);
+        }
+        return aw;
+    }
+}
