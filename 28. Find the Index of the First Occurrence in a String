@@ -1,0 +1,18 @@
+class Solution {
+    public int strStr(String haystack, String needle) {
+        return find(haystack,needle);
+    }
+    static int find(String s,String b){
+        if(s.isEmpty()){
+            return -1;
+        }
+        int i=0;
+        while(i<= s.length() - b.length()){
+            if(s.startsWith(b,i)){
+                return i;
+            }
+            i++;
+        }
+        return -1;
+    }
+}
