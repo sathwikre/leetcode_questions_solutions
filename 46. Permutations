@@ -1,0 +1,21 @@
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+         List<List<Integer>> actual=new ArrayList<>();
+        find(nums,0,new ArrayList<>(),actual);
+       return actual.reversed();
+    }
+     static void find(int[] arr,int i,List<Integer> result, List<List<Integer>> actual){
+        if(i==arr.length){
+            actual.add(result);
+            return;
+        }
+        int val=arr[i];
+        for (int j = 0; j <= result.size(); j++) {{
+            List<Integer> ans=new ArrayList<>(result);
+            ans.add(j,val);
+            find(arr,i+1,ans,actual);
+        }
+
+        }
+    }
+}
