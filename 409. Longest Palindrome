@@ -1,0 +1,42 @@
+class Solution {
+    public int longestPalindrome(String s) {
+        return find(s);
+    }
+     static int find(String s) {
+        ArrayList<Character> unique = new ArrayList<>();
+        ArrayList<Integer> freq = new ArrayList<>();
+        char[] arr = s.toCharArray();
+
+        for (char ch : arr) {
+            if (!unique.contains(ch)) {
+                unique.add(ch);
+            }
+        }
+
+        for (char ch : unique) {
+            int count = 0;
+            for (char c : arr) {
+                if (c == ch) count++;
+            }
+            freq.add(count);
+        }
+
+        int ans = 0;
+        boolean hasOdd = false;
+
+        for (int count : freq) {
+            if (count % 2 == 0) {
+                ans += count;
+            } else {
+                ans += count - 1;
+                hasOdd = true;
+            }
+        }
+
+        if (hasOdd) {
+            ans += 1;
+        }
+
+        return ans;
+    }
+}
