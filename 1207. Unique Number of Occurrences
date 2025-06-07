@@ -1,0 +1,34 @@
+class Solution {
+    public boolean uniqueOccurrences(int[] arr) {
+        return find(arr);
+    }
+    static boolean find(int[] arr){
+        ArrayList<Integer> ans = new ArrayList<>();
+        ArrayList<Integer> list = new ArrayList<>();
+        Arrays.sort(arr);
+        
+        for(int i = 0; i < arr.length; i++){
+            if(!list.contains(arr[i])){
+                list.add(arr[i]);
+            }
+        }
+        
+        for(int j = 0; j < list.size(); j++){
+            int val = list.get(j);
+            int c = 0;
+            for(int i = 0; i < arr.length; i++){
+                if(arr[i] == val){
+                    c++;
+                }
+            }
+            ans.add(c);
+        }
+        Collections.sort(ans);
+        for(int i = 0; i < ans.size() - 1; i++){
+            if(ans.get(i).equals(ans.get(i + 1))){
+                return false;
+            }
+        }
+        return true;
+    }
+}
