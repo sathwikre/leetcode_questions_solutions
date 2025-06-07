@@ -1,0 +1,17 @@
+class Solution {
+    public int hammingDistance(int x, int y) {
+        return find(x,y);
+    }
+     static int find(int x,int y){
+        int c=0;
+        int xor=x^y;
+        while(xor>0){
+            int t=xor&1;
+            if(t==1){
+                c++;
+            }
+            xor=xor>>1;
+        }
+        return c;
+    }
+}
