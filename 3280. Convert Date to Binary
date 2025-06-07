@@ -1,0 +1,15 @@
+class Solution {
+    public String convertDateToBinary(String date) {
+        return find(date);
+    }
+    static String find(String a){
+       String[] arr=a.split("-");
+       int y=Integer.parseInt(arr[0]);
+       int m=Integer.parseInt(arr[1]);
+       int d=Integer.parseInt(arr[2]);
+       String yy=Integer.toBinaryString(y);
+       String mm=Integer.toBinaryString(m);
+       String dd=Integer.toBinaryString(d);
+       return yy+"-"+mm+"-"+dd;
+    }
+}
