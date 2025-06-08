@@ -1,0 +1,15 @@
+class Solution {
+    public String convertToTitle(int columnNumber) {
+        return find( columnNumber);
+    }
+     static String find(int val){
+        StringBuilder s=new StringBuilder();
+        while(val>0){
+            val--;
+            int rem=val%26;
+            s.append((char)(rem+'A'));
+            val=val/26;
+        }
+        return s.reverse().toString();
+    }
+}
