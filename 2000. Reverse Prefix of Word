@@ -1,0 +1,21 @@
+class Solution {
+    public String reversePrefix(String word, char ch) {
+      return find(word,ch)  ;
+    }
+    static String find(String s,char ch){
+        int index=0;
+        for (int i = 0; i < s.length(); i++) {
+            if(s.charAt(i)==ch){
+                index=i;
+                break;
+            }
+        }
+        StringBuilder ans=new StringBuilder();
+        String sub=s.substring(0,index+1);
+        ans.append(sub);
+        ans.reverse();
+        ans.append(s.substring(index+1));
+        //System.out.println(ans.toString());
+        return ans.toString();
+    }
+}
