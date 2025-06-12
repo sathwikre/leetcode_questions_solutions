@@ -1,0 +1,35 @@
+class Solution {
+    public int[] sortByBits(int[] arr) {
+        return find(arr);
+    }
+    static int[] find(int[] arr){
+        int[] bit=new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            bit[i]=count(arr[i]);
+        }
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 1; j < arr.length-i ; j++) {
+                if(bit[j]<bit[j-1]||(bit[j]==bit[j-1]&&arr[j]<arr[j-1])){
+                    int temp=arr[j];
+                    arr[j]=arr[j-1];
+                    arr[j-1]=temp;
+                    int t=bit[j];
+                    bit[j]=bit[j-1];
+                    bit[j-1]=t;
+                }
+            }
+        }
+        return arr;
+    }
+    static int count(int n){
+        int c=0;
+        while (n>0){
+            int a=n&1;
+            if(a==1){
+                c++;
+            }
+            n=n>>1;
+        }
+        return c;
+    }
+}
