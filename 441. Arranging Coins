@@ -1,0 +1,19 @@
+class Solution {
+    public int arrangeCoins(int n) {
+        return  find(n);
+    }
+     static int find(int n){
+       
+        int c=0;
+        for (int i = 1; i <=n; i++) {
+           n=n-i;
+            if(n>=0){
+                c++;
+            }else {
+                break;
+            }
+
+        }
+        return c;
+    }
+}
