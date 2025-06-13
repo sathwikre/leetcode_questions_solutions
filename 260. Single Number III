@@ -1,0 +1,21 @@
+class Solution {
+    public int[] singleNumber(int[] nums) {
+        Arrays.sort(nums);
+        return find(nums);
+    }
+    static int[] find(int[] arr){
+        int[] ans=new int[2];
+        int k=0;
+        int i=0;
+        while(i<arr.length){
+            if(i + 1 < arr.length &&arr[i]==arr[i+1]){
+                i=i+2;
+            }else{
+                ans[k++]=arr[i];
+                i++;
+                
+            }
+        }
+        return ans;
+    }
+}
