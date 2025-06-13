@@ -1,0 +1,13 @@
+class Solution {
+    public int[] decode(int[] encoded, int first) {
+        return find(encoded,first);
+    }
+    static int[] find(int[] arr,int f){
+        int[] ans=new int[arr.length+1];
+        ans[0]=f;
+        for(int i=1;i<ans.length;i++){
+            ans[i]=arr[i-1]^ans[i-1];
+        }
+        return ans;
+    }
+}
