@@ -1,0 +1,13 @@
+class Solution {
+    public int[] findArray(int[] pref) {
+        return find(pref);
+    }
+    static int[] find(int[] arr){
+        int[] ans=new int[arr.length];
+        ans[0]=arr[0];
+        for(int i=1;i<arr.length;i++){
+            ans[i]=arr[i]^arr[i-1];
+        }
+        return ans;
+    }
+}
