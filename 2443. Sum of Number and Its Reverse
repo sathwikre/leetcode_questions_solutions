@@ -1,0 +1,23 @@
+class Solution {
+    public boolean sumOfNumberAndReverse(int num) {
+        return find(num);
+    
+    }
+    static boolean find(int n){
+        for(int i=0;i<=n;i++){
+            if(i+reverse(i)==n){
+                return true;
+            }
+        }
+        return false;
+    }
+    static int reverse(int n){
+        int sum=0;
+        while(n>0){
+            int rem=n%10;
+            sum=sum*10+rem;
+            n/=10;
+        }
+        return sum;
+    }
+}
