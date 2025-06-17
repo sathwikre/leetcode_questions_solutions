@@ -1,0 +1,22 @@
+class Solution {
+    public int[] nextGreaterElements(int[] nums) {
+        return find(nums);
+    } static int[] find(int[] arr){
+        int[] ans=new int[arr.length];
+        for (int i = 0; i <arr.length ; i++) {
+            ans[i]=populate(arr[i],arr,i);
+        }
+        return ans;
+    }
+    static int populate(int n,int[] arr,int s){
+        int j=(s+1)%arr.length;
+
+        while(j!=s){
+            if(n<arr[j]){
+                return arr[j];
+            }
+             j = (j + 1) % arr.length;
+        }
+        return -1;
+}
+}
