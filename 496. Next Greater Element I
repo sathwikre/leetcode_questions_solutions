@@ -1,0 +1,28 @@
+class Solution {
+    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+       return find(nums1,nums2) ;
+    }
+     static int[] find(int[] arr1,int[] arr2){
+        int[] ans=new int[arr1.length];
+        for (int i = 0; i <arr1.length ; i++) {
+            ans[i]=populate(arr1[i],arr2);
+        }
+        return ans;
+    }
+    static int populate(int n,int[] arr){
+        for (int i = 0; i < arr.length; i++) {
+            if(arr[i]==n){
+                return great(n,i,arr);
+            }
+        }
+        return -1;
+    }
+    static int great(int n,int i,int[] arr){
+        for (int j = i+1; j < arr.length ; j++) {
+            if(arr[j]>n){
+                return arr[j];
+            }
+        }
+        return -1;
+    }
+}
