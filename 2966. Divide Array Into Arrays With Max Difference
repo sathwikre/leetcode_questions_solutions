@@ -1,0 +1,26 @@
+class Solution {
+    public int[][] divideArray(int[] nums, int k) {
+        return find(nums,k);
+    }
+    static int[][] find(int[] arr,int k){
+        Arrays.sort(arr);
+        List<List<Integer>> ans=new ArrayList<>();
+        for(int i=0;i<arr.length;i=i+3){
+            int a=arr[i],b=arr[i+1],c=arr[i+2];
+            if(c-a>k){
+                return new int[0][];
+
+            }
+            ans.add(Arrays.asList(a, b, c));
+        }
+         int[][] a = new int[ans.size()][];
+        for (int i = 0; i < ans.size(); i++) {
+            List<Integer> row = ans.get(i);
+            a[i] = new int[row.size()];
+            for (int j = 0; j < row.size(); j++) {
+                a[i][j] = row.get(j);
+            }
+        }
+        return a;
+    }
+}
