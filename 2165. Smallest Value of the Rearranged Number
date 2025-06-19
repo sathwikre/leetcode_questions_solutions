@@ -1,0 +1,29 @@
+class Solution {
+    public long smallestNumber(long num) {
+        return find(num);
+    }
+     static long find(long n){
+        if(n==0) return 0;
+        char[] arr=Long.toString(Math.abs(n)).toCharArray();
+        if(n>0){
+            Arrays.sort(arr);;
+            if(arr[0]=='0'){
+                for (int i = 1; i < arr.length ; i++) {
+                    if(arr[i]!='0'){
+                        char t=arr[0];
+                        arr[0]=arr[i];
+                        arr[i]=t;
+                        break;
+                    }
+                }
+               
+            }
+             return Long.parseLong(new String(arr));
+        }else {
+            Arrays.sort(arr);
+            StringBuilder sb=new StringBuilder(new String(arr));
+            return -1*Long.parseLong(sb.reverse().toString());
+        }
+       
+    }
+}
