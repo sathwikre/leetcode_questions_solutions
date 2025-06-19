@@ -1,0 +1,16 @@
+class Solution {
+    public int findTargetSumWays(int[] nums, int target) {
+      return find(nums,target,0,0)  ;
+    }
+    static int find(int[] arr,int t,int i,int sum){
+       if(i== arr.length){
+           return sum==t?1:0;
+       }
+        int left=0,right=0;
+
+            left+=find(arr,t,i+1,sum+arr[i]);
+            right+=find(arr,t,i+1,sum-arr[i]);
+
+        return left+right;
+    }
+}
