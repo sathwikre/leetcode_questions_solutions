@@ -1,0 +1,17 @@
+class Solution {
+    public int kthSmallest(int[][] matrix, int k) {
+        return find(matrix,k);
+    }
+    static int find(int[][] arr,int k){
+        ArrayList<Integer> ans=new ArrayList<>();
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr[0].length;j++){
+                
+                    ans.add(arr[i][j]);
+                
+            }
+        }
+         Collections.sort(ans);
+         return ans.get(k-1);
+    }
+}
