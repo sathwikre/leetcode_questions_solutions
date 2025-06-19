@@ -1,0 +1,16 @@
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        return find(matrix,target);
+
+    }
+    static boolean find(int[][] arr,int t){
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr[0].length;j++){
+                if(arr[i][j]==t){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
