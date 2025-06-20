@@ -1,0 +1,19 @@
+class Solution {
+    public List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> ans=new ArrayList<>();
+        List<Integer> result=new ArrayList<>();
+        find(1,n,k,ans,result);
+        return ans;
+    }
+    static void find(int start,int n,int k, List<List<Integer>> ans,List<Integer> result){
+        if(result.size()==k){
+            ans.add(new ArrayList<>(result));
+            return;
+        }
+        for(int i=start;i<=n;i++){
+            result.add(i);
+            find(i+1,n,k,ans,result);
+            result.remove(result.size()-1);
+        }
+    }
+}
