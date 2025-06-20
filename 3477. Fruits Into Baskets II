@@ -1,0 +1,24 @@
+class Solution {
+    public int numOfUnplacedFruits(int[] fruits, int[] baskets) {
+       return find(fruits,baskets) ;
+    }
+     static int find(int[] f,int[] b){
+        boolean[] ans=new boolean[b.length];
+        for (int i = 0; i < f.length; i++) {
+            int val=f[i];
+            for (int j = 0; j < b.length; j++) {
+                if(b[j]>=val&&(!ans[j])){
+                    ans[j]=true;
+                    break;
+                }
+            }
+        }
+        int c=0;
+        for(boolean value:ans){
+            if(!value){
+                c++;
+            }
+        }
+        return c;
+    }
+}
