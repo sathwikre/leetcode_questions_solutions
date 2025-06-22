@@ -1,0 +1,58 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> closestNodes(TreeNode root, List<Integer> queries) {
+        List<Integer> ans = new ArrayList<>();
+        find(root, ans);
+        
+        int[] arr = new int[ans.size()];
+        for (int i = 0; i < ans.size(); i++) {
+            arr[i] = ans.get(i);
+        }
+
+        List<List<Integer>> a = new ArrayList<>();
+        for (int i = 0; i < queries.size(); i++) {
+            a.add(binary(arr, queries.get(i)));
+        }
+        return a;
+    }
+
+    private void find(TreeNode root, List<Integer> ans) {
+        if (root == null) return;
+
+        find(root.left, ans);      
+        ans.add(root.val);           
+        find(root.right, ans);    
+    }
+
+    static List<Integer> binary(int[] arr, int val) {
+        int s = 0, e = arr.length - 1;
+        while (s <= e) {
+            int m = s + (e - s) / 2;
+            if (arr[m] == val) {
+                return Arrays.asList(arr[m], arr[m]);
+            } else if (arr[m] > val) {
+                e = m - 1;
+            } else {
+                s = m + 1;
+            }
+        }
+
+        int floor = (e >= 0) ? arr[e] : -1;
+        int ceil = (s < arr.length) ? arr[s] : -1;
+        return Arrays.asList(floor, ceil);
+    }
+}
