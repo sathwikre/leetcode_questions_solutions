@@ -1,0 +1,60 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<Integer> getAllElements(TreeNode root1, TreeNode root2) {
+     List<Integer> a1 = new ArrayList<>();
+      List<Integer> a2 = new ArrayList<>();
+        find1(root1, a1);
+        find2(root2, a2);
+       List<Integer> ans= new ArrayList<>(); 
+       int i=0;
+       int j=0;
+       while(i<a1.size()&&j<a2.size()){
+            if(a1.get(i)<a2.get(j)){
+                ans.add(a1.get(i));
+                i++;
+            }else{
+                ans.add(a2.get(j));
+                j++;
+            }
+       }
+       while(i<a1.size()){
+        ans.add(a1.get(i));
+        i++;
+       }
+        while(j<a2.size()){
+        ans.add(a2.get(j));
+        j++;
+       }
+return ans;
+       
+    }
+
+    private void find1(TreeNode root1, List<Integer> a1) {
+        if (root1 == null) return;
+
+        find1(root1.left, a1);      
+        a1.add(root1.val);           
+       find1(root1.right, a1);    
+    }
+    private void find2(TreeNode root2, List<Integer> a2) {
+        if (root2 == null) return;
+
+        find2(root2.left, a2);      
+        a2.add(root2.val);           
+       find2(root2.right, a2);    
+    }
+}
