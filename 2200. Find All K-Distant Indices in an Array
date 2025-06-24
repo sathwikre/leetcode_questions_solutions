@@ -1,0 +1,17 @@
+class Solution {
+    public List<Integer> findKDistantIndices(int[] nums, int key, int k) {
+      return find(nums,key,k)  ;
+    }
+    static List<Integer> find(int[] arr,int key,int k){
+        List<Integer> ans=new ArrayList<>();
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr.length;j++){
+                if(arr[j]==key&&Math.abs(i-j)<=k){
+                    ans.add(i);
+                    break;
+                }
+            }
+        }
+        return ans;
+    }
+}
