@@ -1,0 +1,22 @@
+class Solution {
+    public int numberOfSpecialChars(String word) {
+      return find(word)  ;
+    }
+    static int find(String s){
+        ArrayList<Character> ans=new ArrayList<>();
+        for(int i=0;i<s.length();i++){
+            if(!ans.contains(s.charAt(i))){
+                ans.add(s.charAt(i));
+            }
+        }
+        int c=0;
+        for(int i=0;i<ans.size();i++){
+            if(ans.get(i)>='a'&&ans.get(i)<='z'){
+                if(ans.contains((char)(ans.get(i) - 'a' + 'A'))){
+                    c++;
+                }
+            }
+        }
+        return c;
+    }
+}
