@@ -1,0 +1,21 @@
+class Solution {
+    public int sumBase(int n, int k) {
+        return find(n,k);
+    }
+    static int find(int n,int k){
+        StringBuilder ans=new StringBuilder();
+        while(n>0){
+            int rem=n%k;
+            ans.append(rem);
+            n=n/k;
+        }
+       String s=ans.reverse().toString();
+       char[] arr=s.toCharArray();
+       int sum=0;
+       for(char ch:arr){
+        sum+=ch-'0';
+        
+       }
+       return sum;
+    }
+}
