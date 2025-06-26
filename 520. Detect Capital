@@ -1,0 +1,24 @@
+class Solution {
+    public boolean detectCapitalUse(String word) {
+        return find(word);
+    }
+
+    static boolean find(String s) {
+        int upperCount = 0;
+        int n = s.length();
+
+        for (int i = 0; i < n; i++) {
+            if (s.charAt(i) >= 'A' && s.charAt(i) <= 'Z') {
+                upperCount++;
+            }
+        }
+
+        if (upperCount == n) return true;
+
+        if (upperCount == 0) return true;
+
+        if (upperCount == 1 && s.charAt(0) >= 'A' && s.charAt(0) <= 'Z') return true;
+
+        return false;
+    }
+}
