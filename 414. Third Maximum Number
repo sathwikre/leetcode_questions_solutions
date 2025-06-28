@@ -1,0 +1,18 @@
+class Solution {
+    public int thirdMax(int[] nums) {
+        Arrays.sort(nums);
+        return find(nums);
+    }
+    static int find(int[] arr){
+        ArrayList<Integer> ans=new ArrayList<>();
+        for(int i=0;i<arr.length;i++){
+            if(!ans.contains(arr[i])){
+                ans.add(arr[i]);
+            }
+        }
+        if(ans.size()<3){
+            return ans.get(ans.size()-1);
+        }
+        return ans.get(ans.size()-3);
+    }
+}
