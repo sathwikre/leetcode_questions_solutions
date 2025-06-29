@@ -1,0 +1,20 @@
+class Solution {
+    public int[] replaceElements(int[] arr) {
+        return find(arr);
+    }
+    static int[] find(int[] arr){
+        int[] ans=new int[arr.length];
+        for(int i=0;i< arr.length;i++){
+            ans[i]=ques(arr,i);
+        }
+        return ans;
+    }
+    static int ques(int[] arr, int i) {
+        int m = -1;
+        for (int j = i + 1; j < arr.length; j++) {
+            m = Math.max(arr[j], m);
+        }
+        return m;
+    }
+
+}
