@@ -1,0 +1,13 @@
+class Solution {
+    public int minimizedStringLength(String s) {
+        char[] a=s.toCharArray();
+          Arrays.sort(a);
+          int l=0;
+          for(int i=1;i<a.length;i++){
+            if(a[i]==a[i-1]){
+                l++;
+            }
+          }
+          return a.length-l;
+    }
+}
