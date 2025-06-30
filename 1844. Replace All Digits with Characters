@@ -1,0 +1,19 @@
+class Solution {
+    public String replaceDigits(String s) {
+      return find(s)  ;
+    }
+    static String find(String s){
+        char[] arr=s.toCharArray();
+        StringBuilder ans=new StringBuilder();
+        ans.append(arr[0]);
+        for(int i=1;i<arr.length;i++){
+            if(arr[i]>='a'&&arr[i]<='z'){
+                ans.append(arr[i]);
+            }else{
+                int val=arr[i]-'0';
+                ans.append((char)(arr[i-1]+val));
+            }
+        }
+        return ans.toString();
+    }
+}
