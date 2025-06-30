@@ -1,0 +1,16 @@
+class Solution {
+    public boolean rotateString(String s, String goal) {
+        return find(s,goal);
+    }
+    static boolean find(String s,String goal){
+        if(s.length()!=goal.length()){
+            return false;
+        }
+        String d=s+s;
+        String g=d;
+        if(g.contains(goal)){
+            return true;
+        }
+        return false;
+    }
+}
