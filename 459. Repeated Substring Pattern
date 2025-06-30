@@ -1,0 +1,13 @@
+class Solution {
+    public boolean repeatedSubstringPattern(String s) {
+        return find(s);
+    }
+    static boolean find(String s){
+        String d=s+s;
+        String g=d.substring(1,d.length()-1);
+        if(g.contains(s)){
+            return true;
+        }
+        return false;
+    }
+}
