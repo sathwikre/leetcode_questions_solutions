@@ -1,0 +1,23 @@
+class Solution {
+    public String sortVowels(String s) {
+        return find(s);
+    }
+    static String find(String s){
+        char[] arr=s.toCharArray();
+        ArrayList<Character> a=new ArrayList<>();
+        for(int k=0;k<arr.length;k++){
+            if(arr[k]=='A'||arr[k]=='E'||arr[k]=='I'||arr[k]=='O'||arr[k]=='U'||arr[k]=='a'||arr[k]=='e'||arr[k]=='i'||arr[k]=='o'||arr[k]=='u'){
+                a.add(arr[k]);
+            }
+        }
+           Collections.sort(a); 
+        int y=0;
+        for(int k=0;k<arr.length;k++){
+           if(arr[k]=='A'||arr[k]=='E'||arr[k]=='I'||arr[k]=='O'||arr[k]=='U'||arr[k]=='a'||arr[k]=='e'||arr[k]=='i'||arr[k]=='o'||arr[k]=='u'){
+                arr[k]=a.get(y);
+                y++;
+            }
+        }
+        return new String(arr);
+    }
+}
