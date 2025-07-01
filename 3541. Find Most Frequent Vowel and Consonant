@@ -1,0 +1,49 @@
+import java.util.*;
+
+class Solution {
+    public int maxFreqSum(String s) {
+        return find(s);
+    }
+
+    static int find(String s) {
+        ArrayList<Character> vowels = new ArrayList<>();
+        ArrayList<Character> consonants = new ArrayList<>();
+
+        for (char c : s.toCharArray()) {
+            if (isVowel(c)) {
+                vowels.add(c);
+            } else {
+                consonants.add(c);
+            }
+        }
+
+        Collections.sort(vowels);
+        Collections.sort(consonants);
+
+        int maxVowelFreq = getMaxFreqFromSortedList(vowels);
+        int maxConsonantFreq = getMaxFreqFromSortedList(consonants);
+
+        return maxVowelFreq + maxConsonantFreq;
+    }
+
+    static boolean isVowel(char c) {
+        return "AEIOUaeiou".indexOf(c) != -1;
+    }
+
+    static int getMaxFreqFromSortedList(ArrayList<Character> list) {
+        if (list.isEmpty()) return 0;
+
+        int maxFreq = 1, currentFreq = 1;
+
+        for (int i = 1; i < list.size(); i++) {
+            if (list.get(i).equals(list.get(i - 1))) {
+                currentFreq++;
+            } else {
+                currentFreq = 1;
+            }
+            maxFreq = Math.max(maxFreq, currentFreq);
+        }
+
+        return maxFreq;
+    }
+}
