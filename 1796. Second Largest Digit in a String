@@ -1,0 +1,29 @@
+import java.util.*;
+
+class Solution {
+    public int secondHighest(String s) {
+        return find(s);
+    }
+
+    static int find(String s) {
+        char[] arr = s.toCharArray();
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        for (int i = 0; i < arr.length; i++) {
+            if (Character.isDigit(arr[i])) {
+                int val = arr[i] - '0';
+                if (!ans.contains(val)) {
+                    ans.add(val);
+                }
+            }
+        }
+
+        Collections.sort(ans); 
+
+        if (ans.size() < 2) {
+            return -1;
+        }
+
+        return ans.get(ans.size() - 2); 
+    }
+}
