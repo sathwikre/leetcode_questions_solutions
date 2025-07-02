@@ -1,0 +1,26 @@
+class Solution {
+    public int[] shortestToChar(String s, char c) {
+        return find(s,c);
+    }
+    static int[] find(String s,char c){
+        ArrayList<Integer> fre=new ArrayList<>();
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)==c){
+                fre.add(i);
+            }
+        }
+        int[] ans=new int[s.length()];
+        for(int i=0;i<ans.length;i++){
+            ans[i]=ss(i,fre);
+        }
+        return ans;
+    }
+    static int ss(int u, ArrayList<Integer> fre){
+        int m=Integer.MAX_VALUE;
+        for(int y=0;y<fre.size();y++){
+            m=Math.min(m,Math.abs(fre.get(y)-u));
+        }
+        return m;
+
+    }
+}
