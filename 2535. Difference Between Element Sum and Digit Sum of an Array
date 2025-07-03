@@ -1,0 +1,24 @@
+class Solution {
+    public int differenceOfSum(int[] nums) {
+       return find(nums) ;
+    }
+    static int find(int[] arr){
+        int s1=0,s2=0;
+        for(int i=0;i<arr.length;i++){
+            s1+=arr[i];
+        }
+        for(int i=0;i<arr.length;i++){
+            s2+=how(arr[i]);
+        }
+        return Math.abs(s1-s2);
+    }
+    static int how(int n){
+        int s=0;
+        while(n>0){
+            int rem=n%10;
+            s+=rem;
+            n=n/10;
+        }
+        return s;
+    }
+}
