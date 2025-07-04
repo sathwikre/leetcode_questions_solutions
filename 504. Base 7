@@ -1,0 +1,23 @@
+class Solution {
+    public String convertToBase7(int num) {
+        return find(num);
+    }
+    static String find(int n){
+          if (n == 0) return "0";
+        boolean flag=false;
+        if(n<0){
+            n=Math.abs(n);
+            flag=true;
+        }
+        StringBuilder ans=new StringBuilder();
+        while(n>0){
+            int rem=n%7;
+            ans.append(rem);
+            n=n/7;
+        }
+        if(flag){
+             ans.append('-');
+        }
+        return ans.reverse().toString();
+    }
+}
