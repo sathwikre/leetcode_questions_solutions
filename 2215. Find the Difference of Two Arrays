@@ -1,0 +1,36 @@
+class Solution {
+    public List<List<Integer>> findDifference(int[] nums1, int[] nums2){
+        return find(nums1,nums2);
+    }
+    static List<List<Integer>> find(int[] arr1,int[] arr2){
+        List<List<Integer>> ans=new ArrayList<>();
+        List<Integer> a1=new ArrayList<>();
+         List<Integer> a2=new ArrayList<>();
+          List<Integer> air1=new ArrayList<>();
+           List<Integer> air2=new ArrayList<>();
+         for(int i=0;i<arr1.length;i++){
+            if(!air1.contains(arr1[i])){
+                    air1.add(arr1[i]);
+            }
+            
+         }
+          for(int i=0;i<arr2.length;i++){
+          if(!air2.contains(arr2[i])){
+                    air2.add(arr2[i]);
+            }
+         }
+         for(int i=0;i<air1.size();i++){
+            if(!air2.contains(air1.get(i))){
+                a1.add(air1.get(i));
+            }
+         }
+         for(int i=0;i<air2.size();i++){
+            if(!air1.contains(air2.get(i))){
+                a2.add(air2.get(i));
+            }
+         }
+        ans.add(a1);
+        ans.add(a2);
+        return ans;
+    }
+}
