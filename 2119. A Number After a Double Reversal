@@ -1,0 +1,19 @@
+class Solution {
+    public boolean isSameAfterReversals(int num) {
+        return find(num);
+    }
+    static boolean find(int n){
+        int n1=first(n);
+        int n2=first(n1);
+        return n2==n;
+    }
+    static int first(int n){
+        int sum=0;
+        while(n>0){
+            int rem=n%10;
+            sum=sum*10+rem;
+            n/=10;
+        }
+        return sum;
+    }
+}
