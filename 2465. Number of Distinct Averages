@@ -1,0 +1,21 @@
+class Solution {
+    public int distinctAverages(int[] nums) {
+        return find(nums);
+    }
+    static int find(int[] arr){
+        Arrays.sort(arr);
+        int s=0;
+        int e=arr.length-1;
+         HashSet<Float> set= new HashSet<>();
+         while(s<e){
+           float t = (arr[s] + arr[e]) / 2.0f;
+
+            if(!set.contains(t)){
+                set.add(t);
+            }
+            s++;
+            e--;
+         }
+         return set.size();
+    }
+}
