@@ -1,0 +1,32 @@
+class Solution {
+    public int mostFrequentEven(int[] nums) {
+        return find(nums);
+    }
+    static int find(int[] arr){
+        int max=Integer.MIN_VALUE;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>max){
+                max=arr[i];
+            }
+        }
+        int[] count=new int[max+1];
+        for(int i=0;i<arr.length;i++){
+            count[arr[i]]++;
+        }
+         int maxFreq = 0;
+        int answer = -1;
+
+        for (int i = 0; i < count.length; i += 2) {
+            if (count[i] > 0) {
+                if (count[i] > maxFreq) {
+                    maxFreq = count[i];
+                    answer = i;
+                } else if (count[i] == maxFreq && i < answer) {
+                    answer = i;
+                }
+            }
+        }
+
+        return answer;
+    }
+}
