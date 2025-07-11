@@ -1,0 +1,11 @@
+class Solution {
+    public int pivotInteger(int n) {
+        return find(n);
+    }static int find(int n){
+        int ans=n*(n+1)/2;
+        int p=(int)Math.sqrt(ans);
+        return p*p==ans?p:-1;
+    }
+    
+
+}
