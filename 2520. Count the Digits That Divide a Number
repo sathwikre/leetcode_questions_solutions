@@ -1,0 +1,17 @@
+class Solution {
+    public int countDigits(int num) {
+        return find(num);
+    }
+    static int find(int n){
+        int c=0;
+        int num=n;
+        while(n>0){
+            int rem=n%10;
+            if(num%rem==0){
+                c++;
+            }
+            n=n/10;
+        }
+        return c;
+    }
+}
