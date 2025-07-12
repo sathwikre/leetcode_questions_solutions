@@ -1,0 +1,16 @@
+class Solution {
+    public int countKeyChanges(String s) {
+        return find(s);
+    }
+    static int find(String s){
+        char[] arr=s.toCharArray();
+        int c=0;
+        for(int i=1;i<arr.length;i++){
+           if (Character.toLowerCase(arr[i]) != Character.toLowerCase(arr[i - 1]))
+{
+                c++;
+            }
+        }
+        return c;
+    }
+}
