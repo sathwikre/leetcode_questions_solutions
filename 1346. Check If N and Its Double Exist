@@ -1,0 +1,23 @@
+class Solution {
+    public boolean checkIfExist(int[] arr) {
+        return find(arr);
+    }
+    static boolean find(int[] arr){
+        HashSet<Integer> ans=new HashSet<>();
+        for(int i=0;i<arr.length;i++){
+            ans.add(arr[i]);
+        }
+        int zeroCount = 0;
+        for (int i = 0; i < arr.length; i++) {
+            ans.add(arr[i]);
+            if (arr[i] == 0) zeroCount++;
+        }
+        if (zeroCount >= 2) return true; 
+        for(int i=0;i<arr.length;i++){
+            if(arr[i] != 0 &&ans.contains(2*arr[i])){
+                return true;
+            }
+        }
+        return false;
+    }
+}
