@@ -1,0 +1,19 @@
+class Solution {
+    public int dominantIndex(int[] nums) {
+        return find(nums);
+    }
+    static int find(int[] arr){
+        int max=0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>arr[max]){
+                max=i;
+            }
+        }
+        for(int i=0;i<arr.length;i++){
+            if(i!=max&&arr[max]<2*arr[i]){
+                return  -1;
+            }
+        }
+        return max;
+    }
+}
