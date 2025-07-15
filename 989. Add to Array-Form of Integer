@@ -1,0 +1,31 @@
+class Solution {
+    public List<Integer> addToArrayForm(int[] num, int k) {
+        return find(num,k);
+    }
+    static List<Integer> find(int[] arr,int k){
+         StringBuilder s = new StringBuilder();
+         StringBuilder sb = new StringBuilder();
+         for(int i=0;i<arr.length;i++){
+            s.append(arr[i]);
+         }
+         String num1=s.toString();
+         String num2=Integer.toString(k);
+        int i = num1.length() - 1, j = num2.length() - 1, carry = 0;
+
+        while (i >= 0 || j >= 0 || carry != 0) {
+            int digit1 = (i >= 0) ? num1.charAt(i--) - '0' : 0;
+            int digit2 = (j >= 0) ? num2.charAt(j--) - '0' : 0;
+            int sum = digit1 + digit2 + carry;
+            sb.append(sum % 10);
+            carry = sum / 10;
+        }
+        sb.reverse();
+
+        List<Integer> ans=new ArrayList<>();
+        for (int idx = 0; idx < sb.length(); idx++) {
+        ans.add(sb.charAt(idx) - '0');
+        }
+
+        return ans;
+    }
+}
