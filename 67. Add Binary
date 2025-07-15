@@ -1,0 +1,12 @@
+import java.math.BigInteger;
+class Solution {
+    public String addBinary(String a, String b) {
+        return find(a,b);
+    }
+    static String find(String a,String b){
+         BigInteger s1 = new BigInteger(a, 2);
+        BigInteger s2 = new BigInteger(b, 2);
+        BigInteger ans = s1.add(s2);
+        return ans.toString(2);
+    }
+}
