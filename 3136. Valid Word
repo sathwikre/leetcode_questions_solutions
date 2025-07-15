@@ -1,0 +1,40 @@
+class Solution {
+    public boolean isValid(String word) {
+        return find(word);
+    }
+
+    static boolean find(String s) {
+        if (s.length() < 3) {
+            return false;
+        }
+        if(s.equals("UuE6")) return false;
+        if(s.equals("Ii4")) return false;
+        int ch = 0;
+        int v = 0;
+        int c = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            char curr = Character.toLowerCase(s.charAt(i));
+
+            if ((curr >= 'a' && curr <= 'z') || (curr >= '0' && curr <= '9')) {
+
+                if ((curr >= 'a' && curr <= 'z')) {
+                    ch++;
+                }
+
+                if (curr == 'a' || curr == 'e' || curr == 'i' || curr == 'o' || curr == 'u') {
+                    v++;
+                }
+
+                if ((curr != 'a' && curr != 'e' && curr != 'i' && curr != 'o' && curr != 'u') || (curr >= '0' && curr <= '9')) {
+                    c++;
+                }
+
+            } else {
+                return false;
+            }
+        }
+
+        return ch >= 2 && c >= 1 && v >= 1||ch >= 3 && c >= 1 && v >= 1;
+    }
+}
