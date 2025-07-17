@@ -1,0 +1,26 @@
+class Solution {
+    public long findTheArrayConcVal(int[] nums) {
+        return find(nums);
+    }
+    static long find(int[] arr){
+        long sum=0;
+        int i=0;
+        int j=arr.length-1;
+        while(i<j){
+            int n1=arr[i];
+            int n2=arr[j];
+            StringBuilder l=new StringBuilder();
+            l.append(n1);
+            l.append(n2);
+            String str = l.toString();
+            long number = Long.parseLong(str);
+            sum+=number;
+            i++;
+            j--;
+        }
+         if (i == j) {
+            sum += arr[i];
+        }
+        return sum;
+    }
+}
