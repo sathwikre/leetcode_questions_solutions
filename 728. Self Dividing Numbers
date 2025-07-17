@@ -1,0 +1,29 @@
+class Solution {
+    public List<Integer> selfDividingNumbers(int left, int right) {
+        return find(left,right);
+    }
+    static List<Integer> find(int f,int l){
+        List<Integer> ans=new ArrayList<>();
+        for(int i=f;i<=l;i++){
+            if(self(i)){
+                ans.add(i);
+            }
+        }
+        return ans;
+    }
+    static boolean self(int n){
+        int temp=n;
+        while(temp>0){
+            int rem=temp%10;
+            if(rem==0){
+              return false;
+            }
+            if(n%rem!=0){
+                return false;
+            }
+            temp=temp/10;
+
+        }
+        return true;
+    }
+}
