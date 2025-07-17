@@ -1,0 +1,19 @@
+class Solution {
+    public boolean digitCount(String num) {
+        return find(num);
+    }
+    static boolean find(String s){
+        int[] count=new int[10];
+        for(int j=0;j<s.length();j++){
+            count[s.charAt(j)-'0']++;
+        }
+        for (int i = 0; i < s.length(); i++) {
+            int expected = s.charAt(i) - '0';
+            if (count[i] != expected) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
