@@ -1,0 +1,23 @@
+class Solution {
+    public String licenseKeyFormatting(String s, int k) {
+        return find(s, k);
+    }
+
+    static String find(String s, int k) {
+        String cleaned = s.replaceAll("-", "").toUpperCase();
+
+        StringBuilder ans = new StringBuilder();
+        int count = 0;
+
+        for (int i = cleaned.length() - 1; i >= 0; i--) {
+            ans.append(cleaned.charAt(i));
+            count++;
+
+            if (count == k && i != 0) {
+                ans.append('-');
+                count = 0;
+            }
+        }
+        return ans.reverse().toString();
+    }
+}
