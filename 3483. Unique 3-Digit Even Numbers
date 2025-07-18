@@ -1,0 +1,26 @@
+class Solution {
+    public int totalNumbers(int[] digits) {
+       return find(digits) ;
+    }
+    static int find(int[] arr){
+        if(arr.length<3){
+            return 0;
+        }
+        Arrays.sort(arr);
+        HashSet<Integer> ans=new HashSet<>();
+   for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if (j == i) continue;
+                for (int k = 0; k < arr.length; k++) {
+                    if (k == i || k == j) continue;
+
+                    int number = arr[i] * 100 + arr[j] * 10 + arr[k];
+                   if(number%2==0&&(number>99&&number<1000)){
+                     ans.add(number);
+                   }
+                }
+            }
+        }
+        return ans.size();
+    }
+}
