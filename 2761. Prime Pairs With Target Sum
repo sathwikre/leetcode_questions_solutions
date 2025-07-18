@@ -1,0 +1,45 @@
+class Solution {
+    public List<List<Integer>> findPrimePairs(int n) {
+        return find(n);
+    }
+    static List<List<Integer>> find(int n){
+        boolean[] ans=new boolean[n];
+        List<List<Integer>> arr=new ArrayList<>();
+        List<Integer> primes = new ArrayList<>();
+        for(int i=2;i*i<n;i++){
+            if(!ans[i]){
+                make(ans,i);
+            }
+        }
+        int c=0;
+        for(int i=2;i<ans.length;i++){
+            if(!ans[i]){
+                c++;
+            }
+        }
+        for (int i = 2; i <n; i++) {
+            if (!ans[i]) primes.add(i);
+        }
+
+        int left = 0, right = primes.size() - 1;
+        while (left <= right) {
+            int sum = primes.get(left) + primes.get(right);
+            if (sum == n) {
+                arr.add(List.of(primes.get(left), primes.get(right)));
+                left++;
+                right--;
+            } else if (sum < n) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        return arr;
+    }
+    static void make(boolean[] ans,int i){
+        for(int j=i*i;j<ans.length;j+=i){
+            ans[j]=true;
+        }
+    }
+   
+}
