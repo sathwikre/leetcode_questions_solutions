@@ -1,0 +1,18 @@
+class Solution {
+    public String complexNumberMultiply(String num1, String num2) {
+        return find(num1,num2);
+    }
+    static String find(String n1,String n2){
+        int[] arr1=prase(n1);
+        int[] arr2=prase(n2);
+        int real=arr1[0]*arr2[0]-arr1[1]*arr2[1];
+        int img=arr2[1]*arr1[0]+arr1[1]*arr2[0];
+        return real+"+"+img+"i";
+    }
+    static int[] prase(String n){
+        String[] arr=n.split("\\+|i");
+        int real=Integer.parseInt(arr[0]);
+        int img=Integer.parseInt(arr[1]);
+        return new int[]{real,img};
+    }
+}
