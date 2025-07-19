@@ -1,0 +1,15 @@
+class Solution {
+    public boolean checkTwoChessboards(String coordinate1, String coordinate2) {
+        return find(coordinate1,coordinate2);
+    }
+    static boolean find(String s1,String s2){
+        int a=get(s1.charAt(0))+(s1.charAt(1)-'0');
+        int b=get(s2.charAt(0))+(s2.charAt(1)-'0');
+        if(a%2==b%2){
+            return true;
+        }
+        return false;
+    }static int get(char ch){
+        return ch-'0'+1;
+    }
+}
