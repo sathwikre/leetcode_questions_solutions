@@ -1,0 +1,15 @@
+class Solution {
+    public boolean squareIsWhite(String coordinates) {
+       return find(coordinates) ;
+    }
+    static boolean find(String s1){
+        int a=get(s1.charAt(0))+(s1.charAt(1)-'0');
+       
+        if(a%2!=0){
+            return true;
+        }
+        return false;
+    }static int get(char ch){
+        return ch-'a'+1;
+    }
+}
