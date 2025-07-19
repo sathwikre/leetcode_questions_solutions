@@ -1,0 +1,12 @@
+class Solution {
+    public int findGCD(int[] nums) {
+        Arrays.sort(nums);
+        return find(nums[0],nums[nums.length-1]);
+    }
+    static int find(int a,int b){
+        if(a==0){
+            return b;
+        }
+        return find(b%a,a);
+    }
+}
