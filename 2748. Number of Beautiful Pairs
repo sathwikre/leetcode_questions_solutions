@@ -1,0 +1,26 @@
+class Solution {
+    public int countBeautifulPairs(int[] nums) {
+        return find(nums);
+    }
+    static int find(int[] arr){
+        int c=0;
+        for(int i=0;i<arr.length-1;i++){
+            String s=arr[i]+"";
+            int f=Integer.parseInt(s.charAt(0)+"");
+            for(int j=i+1;j<arr.length;j++){
+            String a=arr[j]+"";
+            int l=Integer.parseInt(a.charAt(a.length()-1)+"");
+            if(gcd(f,l)==1){
+                c++;
+            }
+            }
+        }
+        return c;
+    }
+    static int gcd(int a,int b){
+        if(b==0){
+            return a;
+        }
+        return gcd(b, a % b);
+    }
+}
