@@ -1,0 +1,29 @@
+class Solution {
+    public int[] getNoZeroIntegers(int n) {
+        return find(n);
+    }
+    static int[] find(int n){
+    
+        for(int i=1;i<n;i++){
+            int a=i;
+            int b=n-i;
+            if(get(a)&&get(b)){
+                 if(a+b==n){
+                return new int[]{a,b};
+               }
+            }
+           
+        }
+        return new int[]{};
+    }
+    static boolean get(int a){
+        while(a>0){
+            int rem=a%10;
+            if(rem==0){
+                return false;
+            }
+            a=a/10;
+        }
+        return true;
+    }
+}
