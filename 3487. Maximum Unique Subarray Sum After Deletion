@@ -1,0 +1,25 @@
+class Solution {
+    public int maxSum(int[] nums) {
+        return find(nums);
+    }
+    static int find(int[] arr){
+        Arrays.sort(arr);
+        int max=arr[arr.length-1];
+        if(max<0){
+            return max;
+        }else{
+            HashSet<Integer> set=new HashSet<>();
+            for(int i=0;i<arr.length;i++){
+                if(!set.contains(arr[i])&&arr[i]>0){
+                    set.add(arr[i]);
+                }
+            }
+            int sum=0;
+            for(int i:set){
+                sum+=i;
+            }
+            return sum;
+        }
+        
+    }
+}
