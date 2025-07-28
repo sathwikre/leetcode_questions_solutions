@@ -1,0 +1,37 @@
+class Solution {
+    public int countMaxOrSubsets(int[] nums) {
+      return find(nums)  ;
+    }
+    static int find(int[] arr){
+       List<List<Integer>> outer =new ArrayList<>();
+       outer.add(new ArrayList<Integer>());
+       for(int i=0;i<arr.length;i++){
+          List<List<Integer>> hare =new ArrayList<>();
+         for(int j=0;j<outer.size();j++){
+           ArrayList<Integer> inner =new ArrayList<>(outer.get(j));
+           inner.add(arr[i]);
+          hare.add(inner);
+         }
+         outer.addAll(hare);
+       }
+       int max=0;
+       for(int i=0;i<arr.length;i++){
+        max=max|arr[i];
+       }
+       return get(outer,max);
+     }
+     static int get(List<List<Integer>> outer, int max){
+        int c=0;
+        for(List<Integer> arr:outer){
+            int l=0;
+            for(int i=0;i<arr.size();i++){
+                    l=l|arr.get(i);
+            }
+            if(l==max){
+                c++;
+            }
+        }
+        return c;
+     }
+
+}
