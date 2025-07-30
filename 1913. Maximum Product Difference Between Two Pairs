@@ -1,0 +1,14 @@
+class Solution {
+    public int maxProductDifference(int[] nums) {
+        Arrays.sort(nums);
+        return find(nums);
+    }
+    static int find(int[] arr){
+        int n=arr.length;
+       int a=arr[0];
+       int b=arr[1];
+       int c=arr[n-1];
+       int d=arr[n-2];
+        return Math.abs(a*b-c*d);
+    }
+}
