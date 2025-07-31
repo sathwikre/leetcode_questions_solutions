@@ -1,0 +1,36 @@
+class Solution {
+    public int[] kWeakestRows(int[][] mat, int k) {
+        return find(mat,k);
+    }
+    static int[] find(int[][] arr,int k){
+        int[] ans=new int[arr.length];
+         int[] index=new int[arr.length];
+        for(int i=0;i<arr.length;i++){
+            int sum=0;
+            for(int j=0;j<arr[i].length;j++){
+                sum+=arr[i][j];
+            }
+            ans[i]=sum;
+             index[i] = i;
+        }
+       
+        bubbleSort(ans,index);
+        return Arrays.copyOfRange(index,0,k);
+    }
+    static void bubbleSort(int[] arr,int[] index) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                   
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    int tem=index[j];
+                    index[j]=index[j+1];
+                    index[j+1]=tem;
+                }
+            }
+        }
+    }
+}
