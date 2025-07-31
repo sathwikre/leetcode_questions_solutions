@@ -1,0 +1,28 @@
+class Solution {
+    public int[] rowAndMaximumOnes(int[][] mat) {
+        return find(mat);
+    }
+    
+    static int[] find(int[][] arr) {
+        int maxCount = -1;
+        int rowIndex = 0;
+        
+        for (int i = 0; i < arr.length; i++) {
+            int sum = 0;
+            for (int j = 0; j < arr[i].length; j++) {
+                sum += arr[i][j];
+            }
+            if (sum > maxCount) {
+                maxCount = sum;
+                rowIndex = i;
+            } else if (sum == maxCount && i < rowIndex) {
+                rowIndex = i;
+            }
+        }
+        
+        int[] ans = new int[2];
+        ans[0] = rowIndex;
+        ans[1] = maxCount;
+        return ans;
+    }
+}
