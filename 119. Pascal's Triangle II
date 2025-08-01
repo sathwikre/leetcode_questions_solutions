@@ -1,0 +1,18 @@
+class Solution {
+    public List<Integer> getRow(int rowIndex) {
+        return get(rowIndex);
+    }
+
+    static List<Integer> get(int n) {
+        List<Integer> ans = new ArrayList<>();
+        long res = 1;
+        ans.add((int) res);
+
+        for (int i = 1; i <= n; i++) {
+            res = res * (n - i + 1) / i;
+            ans.add((int) res);
+        }
+
+        return ans;
+    }
+}
