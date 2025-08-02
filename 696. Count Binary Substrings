@@ -1,0 +1,25 @@
+class Solution {
+    public int countBinarySubstrings(String s) {
+        return find(s);
+    }
+    static int find(String s){
+        char[] arr=s.toCharArray();
+       
+        int val=1;
+        ArrayList<Integer> ans=new ArrayList<>();
+        for(int i=1;i<arr.length;i++){
+            if(arr[i]==arr[i-1]){
+                val++;
+            }else{
+                ans.add(val);
+             val=1;
+            }
+        }
+        ans.add(val);
+        int a=0;
+        for(int i=0;i<ans.size()-1;i++){
+            a+=Math.min(ans.get(i),ans.get(i+1));
+        }
+        return a;
+    }
+}
