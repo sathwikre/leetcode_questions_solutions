@@ -1,0 +1,28 @@
+class Solution {
+    public int maxCount(int m, int n, int[][] ops) {
+        return find(m,n,ops);
+    }
+
+    static int find(int m,int n,int[][] arr){
+        if(arr.length==0){
+            return m*n;
+        }
+        int[] f=new int[arr.length];
+        int[] l=new int[arr.length];
+       for(int i=0;i<arr.length;i++){
+            f[i]=arr[i][0];
+            l[i]=arr[i][1];
+       }
+       int min1=Integer.MAX_VALUE;
+        int min2=Integer.MAX_VALUE;
+       
+       for(int i=0;i<f.length;i++){
+            min1=Math.min(min1,f[i]);
+       }
+       for(int i=0;i<l.length;i++){
+            min2=Math.min(min2,l[i]);
+       }
+       
+       return min1*min2;
+    }
+}
