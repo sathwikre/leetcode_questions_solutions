@@ -1,0 +1,15 @@
+class Solution {
+    public boolean checkString(String s) {
+        return find(s);
+    }
+    static boolean find(String s){
+        String t="ba";
+        for(int i=0;i<s.length();i++){
+            String l=s.substring(i);
+            if(l.startsWith(t)){
+                return false;
+            }
+        }
+        return true;
+    }
+}
