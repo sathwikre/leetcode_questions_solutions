@@ -1,0 +1,24 @@
+class Solution {
+    public boolean areNumbersAscending(String s) {
+        String[] arr=s.split(" ");
+        ArrayList<Integer> ans=new ArrayList<>();
+        for(int i=0;i<arr.length;i++){
+            if(isNumber(arr[i])){
+                ans.add( Integer.parseInt(arr[i]));
+            }
+        }
+        for(int i=0;i<ans.size()-1;i++){
+            if(ans.get(i)>=ans.get(i+1)){
+                return false;
+            }
+        }
+        return true;
+    }  static boolean isNumber(String s) {
+        try {
+            Integer.parseInt(s); 
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+}
