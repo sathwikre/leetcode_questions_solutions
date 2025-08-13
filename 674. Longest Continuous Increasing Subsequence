@@ -1,0 +1,19 @@
+class Solution {
+    public int findLengthOfLCIS(int[] nums) {
+        return find(nums);
+    }
+     static int find(int[] arr){
+        int l=0,r=1,c=0,maxlen=0;
+        while(r<arr.length){
+            if(arr[r]>arr[r-1]){
+                c++;
+            }else{
+                maxlen=Math.max(maxlen,c);
+                c=0;
+            }
+            r++;
+        }
+           maxlen = Math.max(maxlen, c);
+        return maxlen+1;
+    }
+}
