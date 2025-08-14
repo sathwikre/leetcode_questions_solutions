@@ -1,0 +1,36 @@
+class Solution {
+    public int largestInteger(int num) {
+        return find(num);
+    }
+    static int find(int n){
+        ArrayList<Integer> arr=new ArrayList<>();
+        while(n>0){
+            int rem=n%10;
+            arr.add(0,rem);
+            n/=10;
+        }
+        ArrayList<Integer> even=new ArrayList<>();
+        ArrayList<Integer> odd=new ArrayList<>();
+        for(int i=0;i<arr.size();i++){
+            if(arr.get(i)%2!=0){
+                odd.add(arr.get(i));
+            }else{
+                even.add(arr.get(i));
+            }
+        }
+        Collections.sort(odd);
+        Collections.sort(even);
+        StringBuilder ans=new StringBuilder();
+        int i=even.size()-1;
+        int j=odd.size()-1;
+          for (int digit : arr) {
+            if (digit % 2 != 0)
+                ans.append(odd.get(j--));
+            else
+                ans.append(even.get(i--));
+        }
+          String str = ans.toString();
+          return Integer.parseInt(str);
+
+    }
+}
