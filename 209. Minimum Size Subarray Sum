@@ -1,0 +1,20 @@
+class Solution {
+    public int minSubArrayLen(int target, int[] nums) {
+        return find(nums,target);
+    }
+static int find(int[] arr, int k){
+    int sum = 0, l = 0, minlen=Integer.MAX_VALUE;
+    for (int r = 0; r < arr.length; r++) {
+        sum += arr[r];
+        while (sum >= k) {
+                minlen = Math.min(minlen, r - l + 1);
+                sum -= arr[l++];
+            }
+    }
+    if(minlen==Integer.MAX_VALUE){
+        return 0;
+    }
+    return minlen;
+}
+
+}
