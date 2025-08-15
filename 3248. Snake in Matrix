@@ -1,0 +1,22 @@
+class Solution {
+    public int finalPositionOfSnake(int n, List<String> commands) {
+      return find(n,commands)  ;
+    }
+    static int find(int n,List<String> arr){
+        int j=0;int i=0;
+        for(int k=0;k<arr.size();k++){
+            if(arr.get(k).equals("RIGHT")){
+                j++;
+            }
+            if(arr.get(k).equals("DOWN")){
+                i++;
+            }if(arr.get(k).equals("UP")){
+                i--;
+            }if(arr.get(k).equals("LEFT")){
+                j--;
+            }
+
+        }
+        return (i*n)+j;
+    }
+}
