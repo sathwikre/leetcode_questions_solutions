@@ -1,0 +1,26 @@
+class Solution {
+    public int maximum69Number (int num) {
+        return find(num);
+    }
+    static int find(int n){
+        ArrayList<Integer> arr=new ArrayList<>();
+        String a=n+"";
+        int size=a.length();
+        for(int i=0;i<size;i++){
+          
+StringBuilder s = new StringBuilder(String.valueOf(n));
+            if(s.charAt(i)=='6'){
+                s.setCharAt(i, '9');
+            }
+            int w=Integer.parseInt(s.toString());
+            arr.add(w);
+        }
+        int max=Integer.MIN_VALUE;
+        for(int i=0;i<arr.size();i++){
+            if(max<arr.get(i)){
+                max=arr.get(i);
+            }
+        }
+        return max;
+    }
+}
