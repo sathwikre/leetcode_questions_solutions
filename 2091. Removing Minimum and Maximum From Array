@@ -1,0 +1,28 @@
+class Solution {
+    public int minimumDeletions(int[] nums) {
+        return find(nums);
+    }
+    static int find(int[] arr){
+        int min=0;
+        int max=0;
+        for(int i=1;i<arr.length;i++){
+             if (arr[i] < arr[min]) {
+                min = i;   
+            }
+            if (arr[i] > arr[max]) {
+                max = i;  
+            }
+        }
+        int n=arr.length;
+        if(min > max){
+            int temp = min;
+            min = max;
+            max = temp;
+        }
+         int left = max + 1;              
+        int right = n - min;             
+        int both = (min + 1) + (n - max); 
+
+        return Math.min(left, Math.min(right, both));
+    }
+}
