@@ -1,0 +1,30 @@
+import java.util.*;
+
+class Solution {
+    public String frequencySort(String s) {
+        return find(s);
+    }
+
+    static String find(String s) {
+        char[] arr = s.toCharArray();
+        HashMap<Character, Integer> fre = new HashMap<>();
+
+        for (char c : arr) {
+            fre.put(c, fre.getOrDefault(c, 0) + 1);
+        }
+
+        StringBuilder ans = new StringBuilder();
+
+        for (int i = s.length(); i > 0; i--) {
+            for (Map.Entry<Character, Integer> entry : fre.entrySet()) {
+                if (entry.getValue() == i) {
+                    char h = entry.getKey();
+                    for (int j = 0; j < i; j++) {
+                        ans.append(h);
+                    }
+                }
+            }
+        }
+        return ans.toString();
+    }
+}
