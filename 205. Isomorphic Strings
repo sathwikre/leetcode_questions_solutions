@@ -1,0 +1,34 @@
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        return find(s,t);
+    }
+    static boolean find(String s, String t) {
+    if (s.length() != t.length()) {
+        return false;
+    }
+
+    int[] arr1 = new int[256];  
+    int[] arr2 = new int[256]; 
+
+    for (int i = 0; i < 256; i++) {
+        arr1[i] = -1;
+        arr2[i] = -1;
+    }
+
+    for (int i = 0; i < s.length(); i++) {
+        char sc = s.charAt(i);
+        char tc = t.charAt(i);
+
+        if (arr1[sc] == -1 && arr2[tc] == -1) {
+            arr1[sc] = tc;
+            arr2[tc] = sc;
+        } else {
+            if (arr1[sc] != tc || arr2[tc] != sc) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+}
