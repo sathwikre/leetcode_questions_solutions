@@ -1,0 +1,16 @@
+class Solution {
+    public int buyChoco(int[] prices, int money) {
+      Arrays.sort(prices)  ;
+      return find(prices,money);
+    }
+    static int find(int[] arr,int m){
+        if(arr.length<2){
+            return m;
+        }
+        int sum=arr[0]+arr[1];
+        if(sum<=m){
+            return m-sum;
+        }
+        return m;
+    }
+}
