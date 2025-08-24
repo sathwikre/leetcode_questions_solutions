@@ -1,0 +1,30 @@
+class Solution {
+    public int maxFrequencyElements(int[] nums) {
+        return find(nums);
+    }
+    static int find(int[] arr){
+        int max=-1;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>max){
+                max=arr[i];
+            }
+        }
+        int[] fre=new int[max+1];
+        for(int i=0;i<arr.length;i++){
+            fre[arr[i]]++;
+        }
+        int mf=-1;
+        for(int i=0;i<fre.length;i++){
+            if(fre[i]>mf){
+                mf=fre[i];
+            }
+        }
+        int sum=0;
+        for(int i=0;i<fre.length;i++){
+            if(fre[i]==mf){
+                sum+=fre[i];
+            }
+        }
+        return sum;
+    }
+}
