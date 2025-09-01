@@ -1,0 +1,21 @@
+class Solution {
+    public int[] distributeCandies(int candies, int num_people) {
+        return find(candies,num_people);
+    }
+    static int[] find(int c,int p){
+        int[] arr=new int[p];
+        int i=0;
+        int k=1;
+        while(c>0){
+            if(c<k){
+                arr[i%p]+=c;
+            }else{
+                arr[i%p]+=k;
+            }
+            c=c-k;
+            i++;
+            k++;
+        }
+        return arr;
+    }
+}
