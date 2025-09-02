@@ -1,0 +1,28 @@
+class Solution {
+    public int totalMoney(int n) {
+        return find(n);
+    }
+    static int find(int n){
+        int[] day=new int[n];
+        int prev=1;
+        int i=0;
+        int money=1;
+        int d=0;
+        while(i<n){
+            if(d>6){
+                d=0;
+                money=prev+1;
+                prev++;
+            }
+            day[i]=money;
+            money++;
+            i++;
+            d++;
+        }
+        int sum=0;
+        for(int u=0;u<n;u++){
+            sum+=day[u];
+        }
+        return sum;
+    }
+}
