@@ -1,0 +1,34 @@
+class Solution {
+    public int distMoney(int money, int children) {
+        return find(money, children);
+    }
+
+    static int find(int m, int c) {
+        int[] child = new int[c];
+        if (m < c) return -1; 
+        for (int i = 0; i < c; i++) child[i] = 1;
+        m -= c;  
+        int j = 0;
+        while (m > 0 && j < c) {
+            if (m >= 7) {
+                child[j] += 7; 
+                m -= 7;
+            } else {
+                child[j] += m; 
+                m = 0;
+            }
+            j++;
+        }
+        int e = 0, f = 0;
+        for (int x : child) {
+            if (x == 8) e++;
+            else if (x == 4) f++;
+        }
+
+        
+        if (m > 0 && e == c) e--;
+        if (e == c - 1 && f > 0) e--;
+
+        return e;
+    }
+}
