@@ -1,0 +1,34 @@
+class Solution {
+    public String removeOuterParentheses(String s) {
+        return find(s);
+    }
+    static String find(String s){
+        StringBuilder sb=new StringBuilder();
+        char[] ch = s.toCharArray();
+
+        boolean[] b=new boolean[s.length()];
+        int open=0;
+        int close=0;
+        for(int i=0;i<s.length();i++){
+            if(open==0&&close==0){
+                b[i]=true;
+            }if(ch[i]=='('){
+                open++;
+            }else if(ch[i]==')'){
+                close++;
+            }
+            if(open==close){
+                b[i]=true;
+                close=0;
+                open=0;
+            }
+        }
+        for(int i=0;i<ch.length;i++){
+            if(!b[i]){
+                sb.append(ch[i]);
+            }
+        }
+        return new String(sb);
+    }
+    
+}
