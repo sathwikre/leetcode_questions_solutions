@@ -1,0 +1,41 @@
+class Solution {
+    public int shipWithinDays(int[] weights, int days) {
+        return find(weights,days);
+
+    }
+    static int find(int[] arr,int days){
+        int max=-1;
+        int sum=0;
+        for(int i=0;i<arr.length;i++){
+            if(max<arr[i]){
+                max=arr[i];
+                max=arr[i];
+            }
+            sum+=arr[i];
+        }
+        int low=max;
+        int high=sum;
+        while(low<=high){
+            int m=low+(high-low)/2;
+            if(noofd(arr,m)<=days){
+                high=m-1;
+            }else if(noofd(arr,m)>days){
+                low=m+1;
+            }
+        }
+        return low;
+    }
+    static int noofd(int[] arr,int m){
+        int days=1;
+        int capacity=0;
+        for(int i=0;i<arr.length;i++){
+            if(capacity+arr[i]>m){
+                days++;
+                capacity=arr[i];
+            }else{
+                capacity+=arr[i];
+            }
+        }
+        return days;
+    }
+}
