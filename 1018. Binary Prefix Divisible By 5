@@ -1,0 +1,16 @@
+class Solution {
+    public List<Boolean> prefixesDivBy5(int[] nums) {
+        return find(nums);
+    }
+
+    static List<Boolean> find(int[] arr) {
+        List<Boolean> ans = new ArrayList<>();
+        int num = 0; 
+
+        for (int bit : arr) {
+            num = (num * 2 + bit) % 5; 
+            ans.add(num == 0);
+        }
+        return ans;
+    }
+}
