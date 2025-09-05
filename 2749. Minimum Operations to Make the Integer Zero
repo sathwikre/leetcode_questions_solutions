@@ -1,0 +1,19 @@
+class Solution {
+    public int makeTheIntegerZero(int num1, int num2) {
+        return find(num1,num2);
+    }
+    static int find(int n1,int n2){
+       
+        for(int k=1;k<=60;k++){
+             long num=(long)n1-k*(long)n2;
+             if(num<0){
+                break;
+             }
+             if(num>=k&& Long.bitCount(num) <= k){
+                return k;
+             }
+        }
+        return -1;
+
+    }
+}
