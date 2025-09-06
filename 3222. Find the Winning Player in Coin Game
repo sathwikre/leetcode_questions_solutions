@@ -1,0 +1,21 @@
+class Solution {
+    public String winningPlayer(int x, int y) {
+        return find(x,y);
+    }
+    static String find(int x,int y){
+        boolean turn=true;
+        while(x>=1&&y>=4){
+            x=x-1;
+            y=y-4;
+            if(turn){
+                turn=false;
+            }else{
+                turn=true;
+            }
+        }
+        if(!turn){
+            return "Alice";
+        }
+        return "Bob";
+    }
+}
