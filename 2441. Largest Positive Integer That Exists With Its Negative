@@ -1,0 +1,19 @@
+class Solution {
+    public int findMaxK(int[] nums) {
+        return find(nums);
+    }
+    static int find(int[] arr){
+        HashSet<Integer> ans=new HashSet<>();
+        for(int i=0;i<arr.length;i++){
+            ans.add(arr[i]);
+        }
+        Arrays.sort(arr);
+        for(int i=arr.length-1;i>=0;i--){
+            int val=arr[i];
+            if(ans.contains(-val)){
+                return val;
+            }
+        }
+        return -1;
+    }
+}
