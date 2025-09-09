@@ -1,0 +1,16 @@
+class Solution {
+    public int numberOfMatches(int n) {
+        return find(n,0);
+    }
+    static int find(int n,int c){
+        if(n==1){
+            return c;
+        }
+        if(n%2==0)
+        {
+            return find(n/2,c+n/2);
+        }else{
+            return find((n-1)/2 + 1,c+(n-1)/2);
+        }
+    }
+}
