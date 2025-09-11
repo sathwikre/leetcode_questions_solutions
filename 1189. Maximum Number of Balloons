@@ -1,0 +1,18 @@
+class Solution {
+    public int maxNumberOfBalloons(String text) {
+        return find(text);
+    }
+    static int find(String s){
+        HashMap<Character,Integer> hash=new HashMap<>();
+        for(int i=0;i<s.length();i++){
+              hash.put(s.charAt(i), hash.getOrDefault(s.charAt(i), 0) + 1);
+        }
+         int b = hash.getOrDefault('b', 0);
+        int a = hash.getOrDefault('a', 0);
+        int l = hash.getOrDefault('l', 0) / 2; 
+        int o = hash.getOrDefault('o', 0) / 2; 
+        int n = hash.getOrDefault('n', 0);
+
+        return Math.min(Math.min(Math.min(b, a), Math.min(l, o)), n);
+    }
+}
