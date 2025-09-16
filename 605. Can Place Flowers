@@ -1,0 +1,22 @@
+class Solution {
+    public boolean canPlaceFlowers(int[] flowerbed, int n) {
+        return find(flowerbed,n);
+    }
+    static boolean find(int[] arr,int n){
+        int i=0;
+        while(i<arr.length&&n>0){
+            if(arr[i]==0){
+            boolean l=(i==0)||(arr[i-1]==0);
+            boolean r=(i==arr.length-1)||(arr[i+1]==0);
+            if(l&&r){
+                arr[i]=1;
+                n--;
+                i=i+2;
+                continue;
+            }
+            }
+            i++;
+        }
+        return n==0;
+    }
+}
