@@ -1,0 +1,28 @@
+class Solution {
+    public String mostCommonWord(String paragraph, String[] banned) {
+        return find(paragraph,banned);
+    }
+    static String find(String s,String[] ban){
+        s= s.replaceAll("[^a-zA-Z0-9 ]", " ");
+        ArrayList<String> b=new ArrayList<>();
+        for(int i=0;i<ban.length;i++){
+            b.add(ban[i].toLowerCase());
+        }
+        String[] arr=s.split("\\s+");
+        HashMap<String,Integer> map=new HashMap<>();
+         int maxCount = 0;
+        String result = "";
+        for(int i=0;i<arr.length;i++){
+            String low=arr[i].toLowerCase();
+               if (!b.contains(low)) {
+                     map.put(low, map.getOrDefault(low, 0) + 1);
+                if (map.get(low) > maxCount) {
+                    maxCount = map.get(low);
+                    result = low;
+                }
+               }
+        }
+       return result;
+
+    }
+}
