@@ -1,0 +1,30 @@
+class Solution {
+    public String[] uncommonFromSentences(String s1, String s2) {
+        String[] arr1 = s1.split("\\s+");
+        String[] arr2 = s2.split("\\s+");
+
+        Map<String, Integer> map1 = new HashMap<>();
+        for (String w : arr1) map1.put(w, map1.getOrDefault(w, 0) + 1);
+
+        Map<String, Integer> map2 = new HashMap<>();
+        for (String w : arr2) map2.put(w, map2.getOrDefault(w, 0) + 1);
+
+        ArrayList<String> ans = new ArrayList<>();
+
+        for (String w : arr1) {
+            if (map1.get(w) == 1 && !map2.containsKey(w)) {
+                ans.add(w);
+            }
+        }
+
+        for (String w : arr2) {
+            if (map2.get(w) == 1 && !map1.containsKey(w)) {
+                ans.add(w);
+            }
+        }
+
+        String[] e = new String[ans.size()];
+        for (int i = 0; i < e.length; i++) e[i] = ans.get(i);
+        return e;
+    }
+}
