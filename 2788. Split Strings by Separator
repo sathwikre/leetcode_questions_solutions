@@ -1,0 +1,19 @@
+class Solution {
+    public List<String> splitWordsBySeparator(List<String> words, char separator) {
+        return find(words,separator);
+    }
+    static List<String> find(List<String> arr,char sep){
+        List<String> ans=new ArrayList<>();
+          String regex = "\\" + sep;
+        for(int i=0;i<arr.size();i++){
+            String s=arr.get(i);
+            String[] temp=s.split(regex);
+            for(int j=0;j<temp.length;j++){
+               if (!temp[j].isEmpty()) { 
+                    ans.add(temp[j]);
+                }
+            }
+        }
+        return ans;
+    }
+}
