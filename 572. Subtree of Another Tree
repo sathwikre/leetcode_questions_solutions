@@ -1,0 +1,28 @@
+class Solution {
+    public boolean isSubtree(TreeNode root, TreeNode subRoot) {
+        return find(root, subRoot);
+    }
+
+    static boolean find(TreeNode root, TreeNode sub){
+        if (root == null) {
+            return false;
+        }
+        if (root.val == sub.val && helper(root, sub)) {
+            return true;
+        }
+        return find(root.left, sub) || find(root.right, sub);
+    }
+
+    static boolean helper(TreeNode root, TreeNode sub){
+        if (root == null && sub == null) {
+            return true;
+        }
+        if (root == null || sub == null) {
+            return false;
+        }
+        if (root.val != sub.val) {
+            return false;
+        }
+        return helper(root.left, sub.left) && helper(root.right, sub.right);
+    }
+}
