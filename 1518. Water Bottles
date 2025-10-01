@@ -1,0 +1,15 @@
+class Solution {
+    public int numWaterBottles(int numBottles, int numExchange) {
+        return find(numBottles,numExchange);
+    }
+    static int find(int b,int e){
+        int t=b;
+        int emp=b;
+        while(emp>=e){
+            int newBottles = emp / e;
+            t+=newBottles;
+            emp=emp%e+newBottles;
+        }
+        return t;
+    }
+}
