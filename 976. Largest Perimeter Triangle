@@ -1,0 +1,23 @@
+class Solution {
+    public int largestPerimeter(int[] nums) {
+        Arrays.sort(nums);
+        return find(nums);
+    }
+    static int find(int[] arr){
+        if(arr.length<3){
+            return 0;
+        }
+        int ans=0;
+        for(int i=arr.length-1;i>=2;i--){
+            int pres=0;
+             if(arr[i]<arr[i-1]+arr[i-2]){
+             pres=arr[i]+arr[i-1]+arr[i-2];
+        }
+        if(pres>ans){
+            ans=pres;
+        }
+        }
+       
+        return ans;
+    }
+}
