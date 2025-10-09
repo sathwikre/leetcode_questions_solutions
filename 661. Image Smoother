@@ -1,0 +1,34 @@
+class Solution {
+    public int[][] imageSmoother(int[][] img) {
+        int[][] ans=new int[img.length][img[0].length];
+        for(int i=0;i<img.length;i++){
+            for(int j=0;j<img[0].length;j++){
+                int v=getNeighbors(img,i,j);
+                ans[i][j]=v;
+            }
+        }
+        return ans;
+    }
+    public static int  getNeighbors(int[][] img, int i, int j) { 
+        int sum=0;
+        int rows = img.length;
+        int cols = img[0].length;
+        int c=0;
+        for (int dx = -1; dx <= 1; dx++) {
+            for (int dy = -1; dy <= 1; dy++) {
+                int ni = i + dx;
+                int nj = j + dy;
+
+                if (ni >= 0 && ni < rows && nj >= 0 && nj < cols) {
+                    sum+=img[ni][nj];
+                    c++;
+                }
+            }
+        }
+
+       if(c!=0){
+        return sum/c;
+       }
+       return sum;
+    }
+}
