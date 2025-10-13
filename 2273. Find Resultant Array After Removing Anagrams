@@ -1,0 +1,36 @@
+import java.util.*;
+
+class Solution {
+    public List<String> removeAnagrams(String[] words) {
+        if (words.length == 0) {
+            return new ArrayList<>();
+        }
+
+        return find(words);
+    }
+
+    static List<String> find(String[] arr) {
+        List<String> ans = new ArrayList<>();
+        ans.add(arr[0]);
+
+        for (int i = 1; i < arr.length; i++) {
+            if (!isanagrams(arr[i], arr[i - 1])) {
+                ans.add(arr[i]);
+            }
+        }
+
+        return ans;
+    }
+
+    static boolean isanagrams(String s, String a) {
+        char[] characters1 = s.toCharArray();
+        Arrays.sort(characters1);
+        String sortedString1 = new String(characters1);
+
+        char[] characters2 = a.toCharArray();
+        Arrays.sort(characters2);
+        String sortedString2 = new String(characters2);
+
+        return sortedString1.equals(sortedString2);
+    }
+}
