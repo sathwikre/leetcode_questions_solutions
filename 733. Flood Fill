@@ -1,0 +1,20 @@
+class Solution {
+    public int[][] floodFill(int[][] image, int sr, int sc, int color) {
+        int[][] ans=image;
+        int ini=image[sr][sc];
+        int[] delrow={-1,0,0,1};
+        int[] delcol={0,1,-1,0};
+        dfs(image,sr,sc,color,ans,ini,delrow,delcol);
+        return ans;
+    }
+    static void dfs(int[][] image,int sr,int sc,int color,int[][] ans,int ini,int[] delrow,int[] delcol){
+        ans[sr][sc]=color;
+        for(int i=0;i<4;i++){
+            int row=sr+delrow[i];
+            int col=sc+delcol[i];
+            if(row>=0&&row<image.length&&col>=0&&col<image[0].length&&image[row][col]==ini&&ans[row][col]!=color){
+                dfs(image,row,col,color,ans,ini,delrow,delcol);
+            }
+        }
+    }
+}
