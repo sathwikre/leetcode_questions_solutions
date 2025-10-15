@@ -1,0 +1,23 @@
+class Solution {
+    public boolean hasIncreasingSubarrays(List<Integer> nums, int k) {
+        return find(nums, k);
+    }
+
+    static boolean find(List<Integer> arr, int k) {
+        int n = arr.size();
+        for (int i = 0; i + 2 * k <= n; i++) {
+            if (isIncreasing(arr, i, i + k) && isIncreasing(arr, i + k, i + 2 * k)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    static boolean isIncreasing(List<Integer> arr, int start, int end) {
+        for (int i = start + 1; i < end; i++) {
+            if (arr.get(i) <= arr.get(i - 1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
