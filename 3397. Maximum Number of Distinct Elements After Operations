@@ -1,0 +1,21 @@
+class Solution {
+    public int maxDistinctElements(int[] nums, int k) {
+        Arrays.sort(nums);
+        return find(nums,k);
+    }
+    static int find(int[] arr,int k){
+        int c=1;
+        int prev=arr[0]-k;
+        for(int i=1;i<arr.length;i++){
+            int curr=Math.max(prev+1,arr[i]-k);
+            if(curr<=arr[i]+k){
+                c++;
+                prev=curr;
+            }
+            else{
+                prev=arr[i]+k;
+            }
+        }
+        return c;
+    }
+}
