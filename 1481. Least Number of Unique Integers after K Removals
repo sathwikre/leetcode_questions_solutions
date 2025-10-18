@@ -1,0 +1,35 @@
+class Solution {
+    public int findLeastNumOfUniqueInts(int[] arr, int k) {
+        return find(arr,k);
+    }
+    static int find(int[] arr,int k){
+        Arrays.sort(arr); 
+        List<Integer> freq = new ArrayList<>();
+        int count = 1;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] == arr[i - 1]) {
+                count++;
+            } else {
+                freq.add(count);
+                count = 1;
+            }
+        }
+        freq.add(count); 
+        Collections.sort(freq);
+
+        
+        int unique = freq.size();
+        for (int f : freq) {
+            if (k >= f) {
+                k -= f;
+                unique--; 
+            } else {
+                break;
+            }
+        }
+
+        return unique; 
+    }
+
+    
+}
