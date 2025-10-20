@@ -1,0 +1,30 @@
+class Solution {
+    public int sumOfEncryptedInt(int[] nums) {
+       return find(nums) ;
+    }
+    static int find(int[] arr){
+        int sum=0;
+        for(int i=0;i<arr.length;i++){
+            sum+=get(arr[i]);
+        }
+        return sum;
+    }
+    static int get(int num){
+        String s=Integer.toString(num);
+        if(s.length()<=1){
+            return num;
+        }
+        char[] arr=s.toCharArray();
+        int max=-1;
+        for(int i=0;i<arr.length;i++){
+            if(max<arr[i]-'0'){
+                max=arr[i]-'0';
+            }
+        }
+        StringBuilder ans=new StringBuilder();
+        for(int i=0;i<s.length();i++){
+            ans.append(max);
+        }
+        return Integer.parseInt(new String(ans));
+    }
+}
