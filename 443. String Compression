@@ -1,0 +1,29 @@
+class Solution {
+    public int compress(char[] chars) {
+        return find(chars);
+    }
+    static int find(char[] arr) {
+        int write = 0;   
+        int read = 0;   
+        int n = arr.length;
+
+        while (read < n) {
+            char cur = arr[read];
+            int count = 0;
+
+            while (read < n && arr[read] == cur) {
+                read++;
+                count++;
+            }
+            arr[write++] = cur;
+
+            if (count > 1) {
+                for (char d : Integer.toString(count).toCharArray()) {
+                    arr[write++] = d;
+                }
+            }
+        }
+
+        return write;
+    }
+}
