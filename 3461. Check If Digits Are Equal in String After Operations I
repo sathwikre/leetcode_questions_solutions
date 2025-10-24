@@ -1,0 +1,21 @@
+class Solution {
+    public boolean hasSameDigits(String s) {
+        return find(s);
+    }
+    static boolean find(String s){
+        if(s.length()==2){
+            if(s.charAt(0)==s.charAt(1)){
+                return true;
+            }
+            return false;
+        }
+        StringBuilder sb = new StringBuilder();
+        char[] arr=s.toCharArray();
+        for(int i=0;i<arr.length-1;i++){
+            int a=arr[i]-'0';
+            int b=arr[i+1]-'0';
+            sb.append((a+b)%10);
+        }
+        return  find(sb.toString());
+    }
+}
