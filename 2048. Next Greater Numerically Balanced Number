@@ -1,0 +1,26 @@
+class Solution {
+    public int nextBeautifulNumber(int n) {
+       return find(n) ;
+    }
+    static int find(int n){
+        int i = n + 1;
+        while (true) {
+            if (isBalanced(i)) return i;
+            i++;
+        }
+    }
+    public static boolean isBalanced(int num) {
+        String s = Integer.toString(num);
+        int[] count = new int[10]; 
+        
+        for (char c : s.toCharArray()) {
+            count[c - '0']++;
+        }
+        
+        for (char c : s.toCharArray()) {
+            int d = c - '0';
+            if (count[d] != d) return false;
+        }
+        return true;
+    }
+}
