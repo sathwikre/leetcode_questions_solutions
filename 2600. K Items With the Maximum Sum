@@ -1,0 +1,25 @@
+class Solution {
+    public int kItemsWithMaximumSum(int numOnes, int numZeros, int numNegOnes, int k) {
+        return find(numOnes,numZeros,numNegOnes,k);
+    }
+    static int find(int one,int zero,int neg,int k){
+        int sum=0;
+       
+        while(k>0&&one>0){
+            sum+=1;
+            k--;
+            one--;
+        }
+          while(k>0&&zero>0){
+            sum+=0;
+            k--;
+            zero--;
+        }
+          while(k>0&&neg>0){
+            sum-=1;
+            k--;
+            neg--;
+        }
+        return sum;
+    }
+}
