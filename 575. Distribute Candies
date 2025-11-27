@@ -1,0 +1,20 @@
+class Solution {
+    public int distributeCandies(int[] candyType) {
+        Arrays.sort(candyType);
+        return find(candyType);
+    }
+    static int find(int[] arr){
+        int c=count(arr);
+        int eat=arr.length/2;
+        return Math.min(eat,c);
+    }
+    static int count(int[] arr){
+        int c=1;
+        for(int i=1;i<arr.length;i++){
+            if(arr[i]!=arr[i-1]){
+                c++;
+            }
+        }
+        return c;
+    }
+}
