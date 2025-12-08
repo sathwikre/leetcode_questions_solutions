@@ -1,0 +1,33 @@
+class Solution {
+    public int minimumSum(int[] nums) {
+        return find(nums);
+    }
+    
+    static int find(int[] arr){
+        int minSum = Integer.MAX_VALUE; 
+        int n = arr.length;
+        boolean found = false;
+
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                for(int k = 0; k < n; k++){
+                    
+                    if(i < j && j < k && arr[i] < arr[j] && arr[j] > arr[k]){ 
+                        int currentSum = arr[i] + arr[j] + arr[k];
+                        if (currentSum < minSum) {
+                            minSum = currentSum;
+                        }
+                        found = true;
+                    }
+                }
+            }
+        }
+        
+      
+        if(found){
+            return minSum;
+        } else {
+            return -1;
+        }
+    }
+}
