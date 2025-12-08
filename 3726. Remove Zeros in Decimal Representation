@@ -1,0 +1,23 @@
+class Solution {
+    public long removeZeros(long n) {
+      return find(n)  ;
+    }
+    static long find(long n){
+        StringBuilder sb=new StringBuilder();
+        while(n>0){
+            long rem=n%10;
+            if(rem!=0){
+                sb.append(rem);
+            }
+            n=n/10;
+        }
+        sb.reverse();
+        long sum=0;
+        String s=sb.toString();
+        for(char ch:s.toCharArray()){
+            int num=ch-'0';
+            sum=sum*10+num;
+        }
+        return sum;
+    }
+}
