@@ -1,0 +1,21 @@
+class Solution {
+    public int addedInteger(int[] nums1, int[] nums2) {
+       return find(nums1,nums2) ;
+    }
+    static int find(int[] arr1,int[] arr2){
+        
+        int m1=arr1[0];
+        int m2=arr2[0];
+        for(int i=1;i<arr1.length;i++){
+            if(m1>arr1[i]){
+                m1=arr1[i];
+            }
+        }
+        for(int i=1;i<arr2.length;i++){
+            if(m2>arr2[i]){
+                m2=arr2[i];
+            }
+        }
+        return m2-m1;
+    }
+}
