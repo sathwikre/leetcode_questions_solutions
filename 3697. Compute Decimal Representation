@@ -1,0 +1,28 @@
+class Solution {
+    public int[] decimalRepresentation(int n) {
+        return find(n);
+    }
+    static int[] find(int n){
+        ArrayList<Integer> arr=new ArrayList<>();
+        int base=1;
+        while(n>0){
+            int rem=n%10;
+            arr.add(rem*base);
+            n=n/10;
+            base=base*10;
+        }
+        int[] ans=new int[arr.size()];
+        int j=0;
+        int c=0;
+        for(int i=arr.size()-1;i>=0;i--){
+           if(arr.get(i)>0){
+             ans[j]=arr.get(i);
+            j++;
+            
+           }else{
+            c++;
+           }
+        }
+        return Arrays.copyOfRange(ans,0,ans.length-c);
+    }
+}
