@@ -1,0 +1,45 @@
+class Solution {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+
+        return find(numCourses,prerequisites);
+    }
+    static boolean find(int n,int[][] arr){
+        List<List<Integer>> adj=new ArrayList<>();
+        for(int i=0;i<n;i++){
+            adj.add(new ArrayList<>());
+        }
+        for(int i=0;i<arr.length;i++){
+             int u = arr[i][0]; 
+            int v = arr[i][1]; 
+            adj.get(v).add(u);
+        }
+        boolean[] vis=new boolean[n];
+        boolean[] patvis=new boolean[n];
+        for(int i=0;i<n;i++){
+            if(!vis[i]){
+                if(dfs(i,vis,patvis,adj)){
+            return false;
+            }
+            }
+             
+        }
+       
+        return true;
+    }
+    static boolean dfs(int node,boolean[] vis,boolean[] patvis,List<List<Integer>> adj){
+        vis[node]=true;
+        patvis[node]=true;
+        for(int arr:adj.get(node)){
+            
+                if(!vis[arr]){
+                    if (dfs(arr, vis, patvis, adj)) return true;
+                }else if(patvis[arr]){
+                    return true;
+                
+            }
+        }
+        patvis[node]=false;
+        return false;
+    }
+
+}
