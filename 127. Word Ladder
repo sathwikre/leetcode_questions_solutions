@@ -1,0 +1,49 @@
+import java.util.*;
+
+class Solution {
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        return find(beginWord, endWord, wordList);
+    }
+
+    static int find(String b, String e, List<String> word) {
+        Queue<Pair> q = new LinkedList<>();
+        q.offer(new Pair(b, 1));
+
+        Set<String> set = new HashSet<>(word);  
+        if (!set.contains(e)) return 0;        
+        set.remove(b);
+
+        while (!q.isEmpty()) {
+            Pair p = q.poll();
+            String w = p.s;
+            int v = p.val;
+
+            if (w.equals(e)) return v;
+
+            for (int i = 0; i < w.length(); i++) {
+                char[] arr = w.toCharArray();
+                for (int j = 0; j < 26; j++) {
+
+                    arr[i] = (char) (j + 'a');
+                    String h = new String(arr);
+
+                    if (set.contains(h)) {
+                        set.remove(h);
+                        q.offer(new Pair(h, v + 1));
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+}
+
+class Pair {
+    String s;
+    int val;
+
+    Pair(String s, int val) {
+        this.s = s;
+        this.val = val;
+    }
+}
