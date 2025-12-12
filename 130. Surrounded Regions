@@ -1,0 +1,60 @@
+class Solution {
+    public void solve(char[][] board) {
+        find(board);
+    }
+
+    static void dfs(boolean[][] vis, char[][] arr, int i, int j) {
+        vis[i][j] = true;
+        int[] dx = {-1, 1, 0, 0};
+        int[] dy = {0, 0, -1, 1};
+
+        for (int k = 0; k < 4; k++) {
+            int row = i + dx[k];
+            int col = j + dy[k];
+
+            if (row >= 0 && row < arr.length &&
+                col >= 0 && col < arr[0].length &&
+                arr[row][col] == 'O' && !vis[row][col]) {
+
+                dfs(vis, arr, row, col);
+            }
+        }
+    }
+
+    static void find(char[][] arr) {
+        boolean[][] vis = new boolean[arr.length][arr[0].length];
+
+        for (int i = 0; i < arr[0].length; i++) {
+            if (arr[0][i] == 'O' && !vis[0][i]) {
+                dfs(vis, arr, 0, i);
+            }
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i][0] == 'O' && !vis[i][0]) {
+                dfs(vis, arr, i, 0);
+            }
+        }
+
+        int n = arr.length - 1;
+        for (int i = 0; i < arr[0].length; i++) {
+            if (arr[n][i] == 'O' && !vis[n][i]) {
+                dfs(vis, arr, n, i);
+            }
+        }
+
+        int m = arr[0].length - 1;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i][m] == 'O' && !vis[i][m]) {  
+                dfs(vis, arr, i, m);
+            }
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+                if (!vis[i][j]) arr[i][j] = 'X';
+                else arr[i][j] = 'O';
+            }
+        }
+    }
+}
