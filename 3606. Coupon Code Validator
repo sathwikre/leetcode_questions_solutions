@@ -1,0 +1,41 @@
+import java.util.*;
+
+class Solution {
+    public List<String> validateCoupons(String[] code, String[] bus, boolean[] isa) {
+
+        List<Integer> validIdx = new ArrayList<>();
+        List<String> ans = new ArrayList<>();
+
+        Map<String, Integer> priority = new HashMap<>();
+        priority.put("electronics", 0);
+        priority.put("grocery", 1);
+        priority.put("pharmacy", 2);
+        priority.put("restaurant", 3);
+
+        for (int i = 0; i < code.length; i++) {
+            if (!code[i].equals("") &&
+                code[i].matches("[A-Za-z0-9_]+") &&
+                isa[i] &&
+                priority.containsKey(bus[i])) {
+
+                validIdx.add(i);
+            }
+        }
+
+        Collections.sort(validIdx, (i, j) -> {
+            int p1 = priority.get(bus[i]);
+            int p2 = priority.get(bus[j]);
+
+            if (p1 != p2) {
+                return p1 - p2;             
+            }
+            return code[i].compareTo(code[j]); 
+        });
+
+        for (int idx : validIdx) {
+            ans.add(code[idx]);
+        }
+
+        return ans;
+    }
+}
