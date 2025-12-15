@@ -1,0 +1,20 @@
+class Solution {
+    public long getDescentPeriods(int[] prices) {
+       return find(prices) ;
+    }
+    static long find(int[] arr){
+        long ans=arr.length;
+        long k=0;
+        for(int i=1;i<arr.length;i++){
+            if(arr[i-1]-arr[i]==1){
+                k++;
+            }else{
+                ans=ans+k*(k+1)/2;
+                k=0;
+            }
+        }
+        ans += k * (k + 1) / 2;
+
+        return ans;
+    }
+}
