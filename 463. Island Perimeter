@@ -1,0 +1,40 @@
+class Solution {
+     static int sum ;
+    public int islandPerimeter(int[][] grid) {
+         sum = 0;
+        find(grid);
+        return sum;
+    }
+    static void find(int[][] grid){
+        boolean[][] vis=new boolean[grid.length][grid[0].length];
+       
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[0].length;j++){
+                if(!vis[i][j]&&grid[i][j]==1){
+                    dfs(vis,grid,i,j);
+                   
+                }
+            }
+        }
+    }
+    static void dfs(boolean[][] vis,int[][] grid,int i,int j){
+        vis[i][j]=true;
+        sum+=4;
+        int[] row={-1,0,1,0};
+        int[] col={0,1,0,-1};
+        for(int k=0;k<4;k++){
+            int newr=i+row[k];
+            int newc=j+col[k];
+            if(newr >= 0 && newr < grid.length &&
+               newc >= 0 && newc < grid[0].length &&
+               grid[newr][newc] == 1){
+                
+                sum--;
+
+                if(!vis[newr][newc]){
+                    dfs(vis, grid, newr, newc);
+                }
+            }
+        }
+    }
+}
