@@ -1,0 +1,37 @@
+class Solution {
+    public int maxAreaOfIsland(int[][] grid) {
+        return find(grid);
+    }
+     static int find(int[][] grid){
+        boolean[][] vis=new boolean[grid.length][grid[0].length];
+       int m=0;
+ 
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[0].length;j++){
+                if(!vis[i][j]&&grid[i][j]==1){
+                    
+                   m=Math.max(m,dfs(vis,grid,i,j));
+                  
+                   
+                }
+            }
+        }
+        return m;
+    }
+    static int dfs(boolean[][] vis,int[][] grid,int i,int j){
+        vis[i][j]=true;
+        int a=1;
+        int[] row={-1,0,1,0};
+        int[] col={0,1,0,-1};
+        for(int k=0;k<4;k++){
+            int newr=i+row[k];
+            int newc=j+col[k];
+            if(newr >= 0 && newr < grid.length &&
+               newc >= 0 && newc < grid[0].length &&
+               grid[newr][newc] == 1&&!vis[newr][newc]){
+                a+=dfs(vis,grid,newr,newc);
+            }
+        }
+        return a;
+    }
+}
