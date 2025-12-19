@@ -1,0 +1,48 @@
+class Solution {
+    public int countBattleships(char[][] board) {
+        int[][] grid=new int[board.length][board[0].length];
+        for(int i=0;i<board.length;i++){
+            for(int j=0;j<board[0].length;j++){
+                if(board[i][j]=='X'){
+                    grid[i][j]=1;
+                }else{
+                    grid[i][j]=0;
+                }
+            }
+        }
+        return find(grid);
+    }
+    static int find(int[][] grid){
+        boolean[][] vis=new boolean[grid.length][grid[0].length];
+       int m=0;
+ 
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[0].length;j++){
+                if(!vis[i][j]&&grid[i][j]==1){
+                    
+                   dfs(vis,grid,i,j);
+                   m++;
+                  
+                   
+                }
+            }
+        }
+        return m;
+    }
+    static void dfs(boolean[][] vis,int[][] grid,int i,int j){
+        vis[i][j]=true;
+       
+        int[] row={-1,0,1,0};
+        int[] col={0,1,0,-1};
+        for(int k=0;k<4;k++){
+            int newr=i+row[k];
+            int newc=j+col[k];
+            if(newr >= 0 && newr < grid.length &&
+               newc >= 0 && newc < grid[0].length &&
+               grid[newr][newc] == 1&&!vis[newr][newc]){
+                dfs(vis,grid,newr,newc);
+            }
+        }
+  
+    }
+}
