@@ -1,0 +1,20 @@
+class Solution {
+    public int minDeletionSize(String[] strs) {
+        return find(strs);
+    }
+    static int find(String[] strs){
+        int c=0;
+        for(int j=0;j<strs[0].length();j++){
+            for(int i=1;i<strs.length;i++){
+            
+            int ch1=strs[i-1].charAt(j)-'0';
+            int ch2=strs[i].charAt(j)-'0';
+            if(ch1>ch2){
+                c++;
+                break;
+             }
+            } 
+        }
+        return c;
+    }
+}
