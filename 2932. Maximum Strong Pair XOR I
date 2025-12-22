@@ -1,0 +1,33 @@
+class Solution {
+    public int maximumStrongPairXor(int[] nums) {
+        return find(nums);
+    }
+    static int find(int[] arr){
+        ArrayList<pair> ans=new ArrayList<>();
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr.length;j++){
+                if(Math.abs(arr[i]-arr[j])<=Math.min(arr[i],arr[j])){
+                   
+                    ans.add(new pair(arr[i], arr[j]));
+
+                }
+            }
+        }
+        int m=-1;
+        for(int i=0;i<ans.size();i++){
+            pair p=ans.get(i);
+            m=Math.max(p.f^p.s,m);
+        }
+            return m;
+
+
+    }
+}
+class pair{
+    int f;
+    int s;
+    pair(int f,int s){
+        this.f=f;
+        this.s=s;
+    }
+}
