@@ -1,0 +1,48 @@
+class Solution {
+    public int countPrefixSuffixPairs(String[] words) {
+        return find(words);
+    }
+
+    static int find(String[] arr) {
+        int c = 0;
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {   
+                if (arr[j].length() >= arr[i].length()) {
+                    if (issufpre(arr[i], arr[j])) {
+                        c++;
+                    }
+                }
+            }
+        }
+        return c;   
+    }
+
+    static boolean issufpre(String s1, String s2) {
+        return issuf(s1, s2) && ispre(s1, s2);
+    }
+
+
+    static boolean issuf(String s1, String s2) {
+        for (int i = 0; i < s1.length(); i++) {
+            if (s1.charAt(i) != s2.charAt(i)) {   
+                return false;
+            }
+        }
+        return true;
+    }
+
+    
+    static boolean ispre(String s1, String s2) {
+        int i = s1.length() - 1;
+        int j = s2.length() - 1;
+
+        while (i >= 0) {
+            if (s1.charAt(i) != s2.charAt(j)) {   
+                return false;
+            }
+            i--;
+            j--;
+        }
+        return true;
+    }
+}
