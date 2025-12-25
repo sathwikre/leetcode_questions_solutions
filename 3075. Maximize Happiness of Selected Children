@@ -1,0 +1,23 @@
+class Solution {
+    public long maximumHappinessSum(int[] happiness, int k) {
+        Arrays.sort(happiness);
+        return find(happiness,k);
+    }
+    static long find(int[] arr,int k){
+        long ans=0;
+        int c=0;
+        for(int i=arr.length-1;i>=0;i--){
+            if(arr[i]-c<0){
+                return ans;
+            }else{
+                ans+=arr[i]-c;
+                c++;
+                k--;
+            }
+            if(k<=0){
+                return ans;
+            }
+        }
+        return ans;
+    }
+}
