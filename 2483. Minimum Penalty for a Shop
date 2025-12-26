@@ -1,0 +1,32 @@
+class Solution {
+    public int bestClosingTime(String customers) {
+        return find(customers);
+    }
+
+    static int find(String str) {
+        int n = str.length();
+
+        int[] prefix = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            prefix[i] = prefix[i - 1] + (str.charAt(i - 1) == 'N' ? 1 : 0);
+        }
+
+        int[] suffix = new int[n + 1];
+        for (int i = n - 1; i >= 0; i--) {
+            suffix[i] = suffix[i + 1] + (str.charAt(i) == 'Y' ? 1 : 0);
+        }
+
+        int min = Integer.MAX_VALUE;
+        int ans = 0;
+
+        for (int i = 0; i <= n; i++) {
+            int penalty = prefix[i] + suffix[i];
+            if (penalty < min) {
+                min = penalty;
+                ans = i;
+            }
+        }
+
+        return ans;
+    }
+}
