@@ -1,0 +1,20 @@
+class Solution {
+    public int numSubarrayProductLessThanK(int[] nums, int k) {
+        return find(nums,k);
+    }
+    static int find(int[] arr,int k){
+          if (k <= 1) return 0;
+        int c=0;
+        int p=1;
+        int l=0;
+        for(int i=0;i<arr.length;i++){
+           p=p*arr[i];
+           while(p>=k){
+            p=p/arr[l];
+            l++;
+           }
+           c+=i-l+1;
+        }
+        return c;
+    }
+}
