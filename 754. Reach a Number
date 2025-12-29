@@ -1,0 +1,20 @@
+class Solution {
+    public int reachNumber(int target) {
+        return find(Math.abs(target));
+    }
+    static int find(int t){
+        int i=1;
+        int step=0;
+        int c=0;
+        while(step < t||(step-t)%2!=0){
+            
+            
+             step=step+i;
+            c++;
+            i++;
+           
+            
+        }
+        return c;
+    }
+}©leetcode
