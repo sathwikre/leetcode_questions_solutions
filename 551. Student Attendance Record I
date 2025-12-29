@@ -1,0 +1,22 @@
+class Solution {
+    public boolean checkRecord(String s) {
+        int abs=0;
+        int late=0;
+       
+        for(int i=0;i<s.length();i++){
+            char ch=s.charAt(i);
+            if(ch=='A'){
+                abs++;
+            }else if(ch=='L'){
+                late++;
+                if(i+2<s.length()&&s.charAt(i+1)=='L'&&s.charAt(i+2)=='L'){
+                    return false;
+                }
+            }
+        }
+        if(abs>=2){
+            return false;
+        }
+        return true;
+    }
+}
