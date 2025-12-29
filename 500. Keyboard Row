@@ -1,0 +1,54 @@
+class Solution {
+    public String[] findWords(String[] w) {
+
+        HashSet<Character> fr = new HashSet<>();
+        HashSet<Character> sr = new HashSet<>();
+        HashSet<Character> tr = new HashSet<>();
+
+        String s1 = "qwertyuiopQWERTYUIOP";
+        String s2 = "asdfghjklASDFGHJKL";
+        String s3 = "zxcvbnmZXCVBNM";
+
+        for (int i = 0; i < s1.length(); i++) fr.add(s1.charAt(i));
+        for (int i = 0; i < s2.length(); i++) sr.add(s2.charAt(i));
+        for (int i = 0; i < s3.length(); i++) tr.add(s3.charAt(i));
+
+        ArrayList<String> arr = new ArrayList<>();
+
+        for (int i = 0; i < w.length; i++) {
+
+            String word = w[i];
+            boolean flag = true;
+            int row = 0; 
+            char first = word.charAt(0);
+            if (fr.contains(first)) row = 1;
+            else if (sr.contains(first)) row = 2;
+            else row = 3;
+
+            for (int j = 1; j < word.length(); j++) {
+                char ch = word.charAt(j);
+
+                if (row == 1 && !fr.contains(ch)) {
+                    flag = false;
+                    break;
+                }
+                if (row == 2 && !sr.contains(ch)) {
+                    flag = false;
+                    break;
+                }
+                if (row == 3 && !tr.contains(ch)) {
+                    flag = false;
+                    break;
+                }
+            }
+
+            if (flag) arr.add(word);
+        }
+
+        String[] ans = new String[arr.size()];
+        for (int i = 0; i < arr.size(); i++) {
+            ans[i] = arr.get(i);
+        }
+        return ans;
+    }
+}
