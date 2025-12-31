@@ -1,0 +1,42 @@
+import java.util.*;
+
+class Solution {
+    public List<String> summaryRanges(int[] nums) {
+        List<String> ansList = new ArrayList<>(); 
+        if (nums == null || nums.length == 0) {
+            return ansList;
+        }
+
+        List<List<Integer>> arr = new ArrayList<>();
+        int s = nums[0];
+        int e = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == e + 1) {
+                e = nums[i];
+            } else {
+                List<Integer> l = new ArrayList<>();
+                l.add(s);
+                l.add(e);
+                arr.add(l);
+                
+                s = nums[i];
+                e = nums[i];
+            }
+        }
+        List<Integer> last = new ArrayList<>();
+        last.add(s);
+        last.add(e);
+        arr.add(last);
+        for (List<Integer> a : arr) {
+            int start = a.get(0);
+            int end = a.get(1);
+            if (start == end) {
+                ansList.add(String.valueOf(start)); 
+            } else {
+                ansList.add(start + "->" + end); 
+            }
+        }
+        return ansList;
+    }
+}
