@@ -5,7 +5,7 @@ class Solution {
 
     static List<Boolean> find(int[] arr) {
         List<Boolean> ans = new ArrayList<>();
-        int num = 0; 
+        int num = 0 ; 
 
         for (int bit : arr) {
             num = (num * 2 + bit) % 5; 
