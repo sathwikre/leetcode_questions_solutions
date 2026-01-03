@@ -1,0 +1,17 @@
+class Solution {
+    public int numOfWays(int n) {
+        return find(n);
+    }
+    static int find(int n){
+        int mod=1000000007;
+        long a=6;
+        long b=6;
+        for(int i=2;i<=n;i++){
+            long nexta=(3*a+2*b)%mod;
+            long nextb=(2*a+2*b)%mod;
+            a=nexta;
+            b=nextb;
+        }
+        return (int)((a+b)%mod);
+    }
+}
