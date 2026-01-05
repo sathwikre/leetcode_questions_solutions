@@ -1,0 +1,33 @@
+import java.util.*;
+
+class Solution {
+    public long maxMatrixSum(int[][] matrix) {
+        return find(matrix);
+    }
+
+    static long find(int[][] arr) {
+        ArrayList<Integer> a = new ArrayList<>();
+        long sum = 0;
+        int minAbs = Integer.MAX_VALUE;   
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+                int val = arr[i][j];
+                int absVal = Math.abs(val);
+
+                sum += absVal;
+                minAbs = Math.min(minAbs, absVal); 
+
+                if (val < 0) {
+                    a.add(absVal);
+                }
+            }
+        }
+
+        if (a.size() % 2 == 0) {
+            return sum;
+        }
+
+        return sum - 2L * minAbs; 
+    }
+}
