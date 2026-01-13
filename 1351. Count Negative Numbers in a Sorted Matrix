@@ -1,6 +1,6 @@
 class Solution {
     public int countNegatives(int[][] grid) {
-        return find(grid);
+         return find(grid);
     }
     static int find(int[][] arr){
         int c=0;
