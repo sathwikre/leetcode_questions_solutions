@@ -1,0 +1,29 @@
+class Solution {
+    public int minOperations(int[] nums, int k) {
+       return fin(nums,k) ;
+    }
+    static int fin(int[] arr,int k){
+        int x=0;
+        for(int i=0;i<arr.length;i++){
+            x=x^arr[i];
+        }
+        if(x==k){
+            return 0;
+        }else{
+            return find(x,k);
+        }
+      
+    }
+     static int find(int s,int g){
+        int count=0;
+        int xor=s^g;
+        while(xor>0){
+            int ss=xor&1;
+            if(ss==1){
+                count++;
+            }
+            xor=xor>>1;
+        }
+        return count;
+    }
+}
