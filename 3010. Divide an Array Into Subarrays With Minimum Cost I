@@ -1,0 +1,19 @@
+class Solution {
+    public int minimumCost(int[] nums) {
+        return find(nums);
+    }
+    static int find(int[] arr){
+        int sum=0;
+        if(arr.length==3){
+            for(int i=0;i<arr.length;i++){
+                sum+=arr[i];
+            }
+            return sum;
+        }
+        sum+=arr[0];
+        arr[0]=-1;
+        Arrays.sort(arr);
+        sum+=arr[1]+arr[2];
+        return sum;
+    }
+}
