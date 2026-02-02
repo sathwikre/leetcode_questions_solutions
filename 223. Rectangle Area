@@ -1,0 +1,15 @@
+class Solution {
+    public int computeArea(int ax1, int ay1, int ax2, int ay2, int bx1, int by1, int bx2, int by2) {
+       int  width=Math.max(0,Math.min(ax2,bx2) - Math.max(ax1,bx1) );
+        int height = Math.max(0,Math.min(ay2,by2) - Math.max(ay1,by1) );
+
+ int overlappedarea = width * height;
+ int w1=Math.abs(ax1-ax2);
+ int h1=Math.abs(ay1-ay2);
+ int a1=w1*h1;
+ int w2=Math.abs(bx1-bx2);
+ int h2=Math.abs(by1-by2);
+ int a2=w2*h2;
+ return a1+a2-overlappedarea;
+    }
+}
