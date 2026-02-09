@@ -1,7 +1,7 @@
 class Solution {
     public void solve(char[][] board) {
         find(board);
-    }
+    } 
 
     static void dfs(boolean[][] vis, char[][] arr, int i, int j) {
         vis[i][j] = true;
