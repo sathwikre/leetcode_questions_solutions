@@ -28,6 +28,9 @@ class Solution {
         }
         return true;
     }
+    static ArrayList<pair> convert(String s){
+        ArrayList<pair>  arr=new ArrayList<>();
+        int i=0;
         while(i<s.length()){
             int c=0;
             char ch=s.charAt(i);
