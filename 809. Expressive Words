@@ -1,0 +1,50 @@
+class Solution {
+    public int expressiveWords(String s, String[] words) {
+      return find(s,words)  ;
+    }
+    static int find(String s,String[] words){
+        ArrayList<pair> s1=convert(s);
+        int c=0;
+        for(int i=0;i<words.length;i++){
+            ArrayList<pair> w1=convert(words[i]);
+            if(check(s1,w1)){
+                c++;
+            }
+        }
+        return c;
+    }
+    static boolean check(ArrayList<pair> s1,ArrayList<pair> w1){
+        if(s1.size()!=w1.size()) return false;
+        for(int i=0;i<s1.size();i++){
+            if(s1.get(i).ch!=w1.get(i).ch){
+                return false;
+            }
+            if(s1.get(i).c<w1.get(i).c){
+                return false;
+            }
+            if(s1.get(i).c>w1.get(i).c&&s1.get(i).c<3){
+                return false;
+            }
+        }
+        return true;
+    }
+        while(i<s.length()){
+            int c=0;
+            char ch=s.charAt(i);
+           while (i < s.length() && s.charAt(i) == ch) {
+                c++;i++;
+
+            }
+            arr.add(new pair(ch,c));
+        }
+        return arr;
+    }
+}
+class pair{
+    int c;
+    char ch;
+    pair(char ch,int c){
+        this.ch=ch;
+        this.c=c;
+    }
+}
