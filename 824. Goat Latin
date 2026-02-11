@@ -1,0 +1,34 @@
+class Solution {
+    public String toGoatLatin(String sentence) {
+        return find(sentence);
+    }
+
+    static String find(String s) {
+        String[] arr = s.split("\\s+");
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < arr.length; i++) {
+            String a = arr[i];
+
+            char first = Character.toLowerCase(a.charAt(0));
+
+            if (first == 'a' || first == 'e' || first == 'i' || 
+                first == 'o' || first == 'u') {
+                a = a + "ma";
+            } else {
+                a = a.substring(1) + a.charAt(0) + "ma";
+            }
+
+            for (int j = 0; j <= i; j++) {
+                a = a + "a";
+            }
+
+            result.append(a);
+            if (i != arr.length - 1) {
+                result.append(" ");
+            }
+        }
+
+        return result.toString();
+    }
+}
