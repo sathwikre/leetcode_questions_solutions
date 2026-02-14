@@ -1,0 +1,25 @@
+class Solution {
+    public int[] distinctDifferenceArray(int[] nums) {
+        return find(nums);
+    }
+    static int[] find(int[] arr){
+        int[] ans=new int[arr.length];
+        for(int i=0;i<arr.length;i++){
+            HashSet<Integer> pre=new HashSet<>();
+            HashSet<Integer> suf=new HashSet<>();
+            for(int j=0;j<=i;j++){
+                if(!pre.contains(arr[j])){
+                    pre.add(arr[j]);
+                }
+            }
+             for(int k=i+1;k<arr.length;k++){
+                if(!suf.contains(arr[k])){
+                    suf.add(arr[k]);
+                }
+            }
+            ans[i]=pre.size()-suf.size();
+
+        }
+        return ans;
+    }
+}
