@@ -1,0 +1,25 @@
+class Solution {
+    public List<String> readBinaryWatch(int turnedOn) {
+        return find(turnedOn);
+    }
+    static List<String> find(int n){
+        List<String> ans=new ArrayList<String>();
+        for(int hr=0;hr<12;hr++){
+       
+            for(int min=0;min<60;min++){
+                
+                int cnt=Integer.bitCount(hr)+Integer.bitCount(min);
+                if(cnt==n){
+                    String text;
+                    if(min<10){
+                        text=hr+":0"+min;
+                    }else{
+                        text=hr+":"+min;
+                    }
+                    ans.add(text);
+                }
+          }
+        }
+       return ans;
+    }
+}
