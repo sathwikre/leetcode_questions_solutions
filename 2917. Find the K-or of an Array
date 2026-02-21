@@ -1,0 +1,35 @@
+class Solution {
+    public int findKOr(int[] nums, int k) {
+        return find(nums, k);
+    }
+
+    static int find(int[] arr, int k) {
+        int[] copy = arr.clone();
+
+        StringBuilder ans = new StringBuilder();
+
+        for (int i = 0; i < 32; i++) {
+            int c = 0;
+
+            for (int j = 0; j < copy.length; j++) {
+                if (isset(copy[j])) {
+                    c++;
+                }
+                copy[j] = copy[j] >>> 1;
+            }
+
+            if (c >= k) {
+                ans.append('1');
+            } else {
+                ans.append('0');
+            }
+        }
+
+        ans.reverse();
+        return Integer.parseInt(ans.toString(), 2);
+    }
+
+    static boolean isset(int n) {
+        return (n & 1) == 1;
+    }
+}
