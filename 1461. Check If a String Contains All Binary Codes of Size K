@@ -1,0 +1,15 @@
+class Solution {
+    public boolean hasAllCodes(String s, int k) {
+      return find(s,k)  ;
+    }
+    static boolean find(String s,int k){
+        HashSet<String> arr=new HashSet<>();
+        for(int i=0;i<=s.length()-k;i++){
+            String c=s.substring(i,i+k);
+            if(!arr.contains(c)){
+                arr.add(c);
+            }
+        }
+        return arr.size()==(int)Math.pow(2,k);
+    }
+}
