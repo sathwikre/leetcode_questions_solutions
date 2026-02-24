@@ -1,0 +1,25 @@
+class Solution {
+    public int sumRootToLeaf(TreeNode root) {
+        StringBuilder sb = new StringBuilder();
+        return find(root, sb);
+    }
+
+    static int find(TreeNode root, StringBuilder sb) {
+        if (root == null) {
+            return 0;
+        }
+        sb.append(root.val);
+
+        int sum = 0;
+        if (root.left == null && root.right == null) {
+            sum = Integer.parseInt(sb.toString(), 2);
+        } else {
+            sum += find(root.left, sb);
+            sum += find(root.right, sb);
+        }
+
+        sb.deleteCharAt(sb.length() - 1);
+
+        return sum;
+    }
+}
