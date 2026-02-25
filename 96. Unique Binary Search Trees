@@ -1,0 +1,20 @@
+class Solution {
+    public int numTrees(int n) {
+        return find(n);
+    }
+
+    static int find(int n) {
+        long com = find1(2 * n, n);
+        long ans = com / (n + 1);
+        return (int) ans;
+    }
+
+    static long find1(int e, int b) {
+        long res = 1;
+
+        for (int i = 1; i <= b; i++) {
+            res = res * (e - b + i) / i;
+        }
+        return res;
+    }
+}
