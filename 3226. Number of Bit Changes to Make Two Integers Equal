@@ -1,0 +1,22 @@
+class Solution {
+    public int minChanges(int n, int k) {
+        return find(n,k);
+    }
+    static int find(int n,int k){
+        int c=0;
+        int max=Math.max(n,k);
+        while(max>0){
+            int b1=n&1;
+            int b2=k&1;
+            if(b1==1&&b2==0){
+                c++;
+            }else if(b1==0&&b2==1){
+                return -1;
+            }
+            n=n>>1;
+            k=k>>1;
+            max=max>>1;
+        }
+        return c;
+    }
+}
