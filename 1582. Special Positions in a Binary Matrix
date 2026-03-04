@@ -1,0 +1,32 @@
+class Solution {
+    public int numSpecial(int[][] mat) {
+        return find(mat);
+    }
+    static int find(int[][] arr){
+        int c=0;
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr[0].length;j++){
+              if(arr[i][j] == 1 && isgood(arr,i,j)){
+                    c++;
+                }
+            }
+        }
+        return c;
+    }
+   static boolean isgood(int[][] arr, int i, int j){
+
+        for(int k = 0; k < arr[0].length; k++){
+            if(arr[i][k] == 1 && k != j){
+                return false;
+            }
+        }
+
+        for(int k = 0; k < arr.length; k++){
+            if(arr[k][j] == 1 && k != i){
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
