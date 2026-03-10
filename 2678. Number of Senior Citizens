@@ -1,0 +1,17 @@
+class Solution {
+    public int countSeniors(String[] details) {
+        return find(details);
+    }
+    static int find(String[] arr){
+        int c=0;
+        for(int i=0;i<arr.length;i++){
+            int ch1=arr[i].charAt(11)-'0';
+            int ch2=arr[i].charAt(12)-'0';
+            int age=ch1*10+ch2;
+            if(age>60){
+                c++;
+            }
+        }
+        return c;
+    }
+}
