@@ -1,0 +1,24 @@
+class Solution {
+    public int minimumOperations(int[][] grid) {
+        return find(grid);
+    }
+    static int find(int[][] arr){
+        int[][] a=new int[arr.length][arr[0].length];
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr[i].length;j++){
+                a[i][j]=arr[i][j];
+            }
+        }
+        int c=0;
+        for(int j=0;j<a[0].length;j++){
+            for(int i=1;i<arr.length;i++){
+                if(a[i][j]<=a[i-1][j]){
+                    c+=a[i-1][j]-a[i][j]+1;
+                    a[i][j]=a[i-1][j]+1;
+                }
+            }
+        }
+        return c;
+
+    }
+}
