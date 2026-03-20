@@ -4,7 +4,6 @@ class Solution {
         find(root, ans);
         return ans;
     }
-
     private void find(TreeNode root, List<Integer> ans) {
         if (root == null) return;
 
