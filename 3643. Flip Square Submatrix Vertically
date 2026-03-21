@@ -1,0 +1,23 @@
+class Solution {
+    public int[][] reverseSubmatrix(int[][] grid, int x, int y, int k) {
+        int[][] ans=new int[grid.length][grid[0].length];
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[0].length;j++){
+                ans[i][j]=grid[i][j];
+            }
+        }
+        int r= x + k - 1;
+        for(int i=x;i < x + k / 2;i++){
+            for(int j=y;j<y+k;j++){
+                swap(ans,i,j,r,j);
+            }
+            r--;
+        }
+        return ans;
+    }
+    static void swap(int[][] arr,int i,int j,int r,int k){
+        int temp=arr[i][j];
+        arr[i][j]=arr[r][k];
+        arr[r][k]=temp;
+    }
+}
