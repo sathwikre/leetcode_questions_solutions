@@ -1,6 +1,6 @@
 class Solution {
     public int findPeakElement(int[] nums) {
-        return find(nums);
+       return find(nums);
     }
     static int find(int[] arr){
         int s=0;
