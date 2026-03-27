@@ -1,0 +1,28 @@
+class Solution {
+    public boolean areSimilar(int[][] arr, int k) {
+        int[][] temp=new int[arr.length][];
+        for(int i=0;i<arr.length;i++){
+           temp[i] = arr[i].clone();
+        }
+       int n=arr[0].length;
+        for(int h=0;h<k;h++){
+            for(int i=0;i<arr.length;i++){
+                    if(i%2==0){
+                        int first=arr[i][0];
+                        for(int l=0;l<arr[0].length-1;l++){
+                            arr[i][l]=arr[i][l+1];
+                        }
+                        arr[i][n-1]=first;
+                    }else{
+                        int last=arr[i][n-1];
+                        for(int l=n-1;l>0;l--){
+                            arr[i][l]=arr[i][l-1];
+
+                        }
+                        arr[i][0]=last;
+                    }
+            }
+        }
+        return Arrays.deepEquals(arr, temp);
+    }
+}
