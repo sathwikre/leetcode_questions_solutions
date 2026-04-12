@@ -1,6 +1,6 @@
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-       return find(s);
+       return find(s) ;
     }
     static int find(String s){
         int l=0;
