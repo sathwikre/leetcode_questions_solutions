@@ -1,0 +1,18 @@
+class Solution {
+    public int timeRequiredToBuy(int[] tickets, int k) {
+        int c=0;
+        int i=0;
+        int n=tickets.length;
+        while (tickets[k] > 0){
+           
+            if(tickets[i%n]>0){
+                tickets[i%n]-=1;
+                c++;
+            }
+            i++;
+        }
+        
+         return c;
+            
+    }
+}
