@@ -1,0 +1,14 @@
+class Solution {
+    public List<Integer> stableMountains(int[] height, int threshold) {
+        return find(height,threshold);
+    }
+    static List<Integer> find(int[] arr,int val){
+        List<Integer> ans=new ArrayList<>();
+        for(int i=1;i<arr.length;i++){
+            if(arr[i-1]>val){
+                ans.add(i);
+            }
+        }
+        return ans;
+    }
+}
