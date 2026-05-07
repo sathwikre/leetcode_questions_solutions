@@ -1,0 +1,22 @@
+class Solution {
+    public int generateKey(int num1, int num2, int num3) {
+        int n1=(int)(Math.log(num1))+1;
+        int n2=(int)(Math.log(num2))+1;
+        int n3=(int)(Math.log(num3))+1;
+        int n=Math.max(n1,Math.max(n2,n3));
+        int c=0;
+       StringBuilder sb=new StringBuilder();
+        while(c!=n){
+            int h1=num1%10;
+            int h2=num2%10;
+            int h3=num3%10;
+            num1=num1/10;
+            num2=num2/10;
+            num3=num3/10;
+            sb.append(Math.min(h1,Math.min(h2,h3)));
+            c++;
+        }
+        String s=sb.reverse().toString();
+        return Integer.parseInt(s);
+    }
+}
