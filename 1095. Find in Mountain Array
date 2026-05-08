@@ -1,0 +1,79 @@
+class Solution {
+
+    public int findInMountainArray(int target, MountainArray mountainArr) {
+
+        int peak = findPeak(mountainArr);
+
+        int first = binarySearch(mountainArr, target, 0, peak, true);
+
+        if(first != -1) {
+            return first;
+        }
+
+        return binarySearch(
+            mountainArr,
+            target,
+            peak + 1,
+            mountainArr.length() - 1,
+            false
+        );
+    }
+
+    static int findPeak(MountainArray arr) {
+
+        int s = 0;
+        int e = arr.length() - 1;
+
+        while(s < e) {
+
+            int m = s + (e - s) / 2;
+
+            if(arr.get(m) < arr.get(m + 1)) {
+                s = m + 1;
+            } else {
+                e = m;
+            }
+        }
+
+        return s;
+    }
+
+    static int binarySearch(
+        MountainArray arr,
+        int target,
+        int s,
+        int e,
+        boolean asc
+    ) {
+
+        while(s <= e) {
+
+            int m = s + (e - s) / 2;
+
+            int val = arr.get(m);
+
+            if(val == target) {
+                return m;
+            }
+
+            if(asc) {
+
+                if(val < target) {
+                    s = m + 1;
+                } else {
+                    e = m - 1;
+                }
+
+            } else {
+
+                if(val < target) {
+                    e = m - 1;
+                } else {
+                    s = m + 1;
+                }
+            }
+        }
+
+        return -1;
+    }
+}
