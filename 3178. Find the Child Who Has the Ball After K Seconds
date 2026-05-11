@@ -1,0 +1,10 @@
+class Solution {
+    public int numberOfChild(int n, int k) {
+       int d=k/(n-1);
+       int r=k%(n-1);
+       if((d&1)==1) {
+        return n-r-1;
+       }
+       else return r;
+    }
+}
