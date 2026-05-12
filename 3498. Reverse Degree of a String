@@ -1,0 +1,11 @@
+class Solution {
+    public int reverseDegree(String s) {
+       String a="zyxwvutsrqponmlkjihgfedcba" ;
+       int sum=0;
+       for(int i=0;i<s.length();i++){
+            int p=a.indexOf(s.charAt(i));
+            sum=sum+(i+1)*(p+1);
+       }
+       return sum;
+    }
+}
