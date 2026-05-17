@@ -1,0 +1,28 @@
+class Solution {
+    public int maxDivScore(int[] nums, int[] div) {
+        int[] arr=new int[div.length];
+        for(int i=0;i<div.length;i++){
+            int c=0;
+            for(int j=0;j<nums.length;j++){
+                if(nums[j]%div[i]==0){
+                    c++;
+                }
+            }
+            arr[i]=c;
+        }
+        int m=-1;
+        int min=Integer.MAX_VALUE;
+        for(int i=0;i<arr.length;i++){
+            if(m<arr[i]){
+                m=arr[i];
+                min=div[i];
+              
+            }else if(arr[i]==m){
+                if(div[i]<min){
+                    min=div[i];
+                }
+            }
+        }
+        return min;
+    }
+}
