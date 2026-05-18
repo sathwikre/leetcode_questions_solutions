@@ -1,0 +1,13 @@
+class Solution {
+    public int closestTarget(String[] words, String target, int start) {
+        int len=0;
+        int min=Integer.MAX_VALUE;
+        for(int i=0;i<words.length;i++){
+            if(words[i].equals(target)){
+                len=Math.min(Math.abs(i-start),words.length-Math.abs(i-start));
+                min=Math.min(min,len);
+            }
+        }
+        return min==Integer.MAX_VALUE?-1:min;
+    }
+}
