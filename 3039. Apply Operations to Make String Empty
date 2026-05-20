@@ -1,0 +1,22 @@
+class Solution {
+    public String lastNonEmptyString(String s) {
+        int[] freq=new int[26];
+        for(int i=0;i<s.length();i++){
+            freq[s.charAt(i)-'a']++;
+        }
+        int c=0;
+        for(int i=0;i<26;i++){
+            if(c<=freq[i]){
+                c=freq[i];
+            }
+        }
+        StringBuilder ans=new StringBuilder();
+        for(int i=s.length()-1;i>=0;i--){
+            if( freq[s.charAt(i)-'a']==c){
+                ans.append(s.charAt(i));
+                freq[s.charAt(i)-'a']--;
+            }
+        }
+        return ans.reverse().toString();
+    }
+}
