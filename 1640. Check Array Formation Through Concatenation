@@ -1,0 +1,26 @@
+class Solution {
+    public boolean canFormArray(int[] arr, int[][] pieces) {
+        HashMap<Integer, int[]> map=new HashMap<>();
+        for(int[] a:pieces){
+            int val=a[0];
+            map.put(val,a);
+        }
+        int i=0;
+        while(i<arr.length){
+            if(!map.containsKey(arr[i])){
+                return false;
+            }else{
+                int[] aa=map.get(arr[i]);
+                int j=0;
+                while(j<aa.length&&i<arr.length){
+                    if(arr[i]!=aa[j]){
+                        return false;
+                    }
+                    i++;
+                    j++;
+                }
+            }
+        }
+        return true;
+    }
+}
