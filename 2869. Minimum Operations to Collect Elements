@@ -1,0 +1,18 @@
+class Solution {
+    public int minOperations(List<Integer> nums, int k) {
+       int[] arr=new int[nums.size()+1];
+       int t=0;
+        int c=0;
+        for(int i=nums.size()-1;i>=0;i--){
+            if(arr[nums.get(i)]!=1&&nums.get(i)<=k){
+                arr[nums.get(i)]=1;
+                t++;
+            }
+            if(t==k){
+                return c+1;
+            }
+            c++;
+        }
+        return 0;
+    }
+}
