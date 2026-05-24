@@ -1,0 +1,29 @@
+class Solution {
+    public int hardestWorker(int n, int[][] logs) {
+        int[] arr=new int[logs.length];
+        for(int i=0;i<logs.length;i++){
+            int val=logs[i][1];
+            if(i==0){
+                int prev=0;
+                arr[i]=val-prev;
+            }else{
+                int prev=logs[i-1][1];
+                arr[i]=val-prev;
+            }
+        }
+        int ans = logs[0][0];
+        int max = arr[0];
+        for(int i=1;i<arr.length;i++){
+           
+            if(arr[i]>max){
+                max=arr[i];
+                ans=logs[i][0];
+            }else if (arr[i] == max) {
+                if (logs[i][0] < ans) {
+                    ans = logs[i][0];
+                }
+            }
+        }
+        return ans;
+    }
+}
