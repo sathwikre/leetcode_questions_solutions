@@ -1,0 +1,25 @@
+class Solution {
+    public String greatestLetter(String s) {
+        return find(s);
+    }
+     static String find(String s){
+        ArrayList<Character> ans=new ArrayList<>();
+        for(int i=0;i<s.length();i++){
+            if(!ans.contains(s.charAt(i))){
+                ans.add(s.charAt(i));
+            }
+        }
+        char max='0';
+        for(int i=0;i<ans.size();i++){
+            if(ans.get(i)>='a'&&ans.get(i)<='z'){
+                if(ans.contains((char)(ans.get(i) - 'a' + 'A'))){
+                    
+                   if(max<(char)(ans.get(i) - 'a' + 'A')){
+                    max=(char)(ans.get(i) - 'a' + 'A');
+                   }
+                }
+            }
+        }
+        return max == '0' ? "" : max + "";
+    }
+}
