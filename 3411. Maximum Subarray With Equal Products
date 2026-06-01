@@ -1,0 +1,31 @@
+class Solution {
+    public int maxLength(int[] nums) {
+        int max=0;
+        for(int i=0;i<nums.length-1;i++){
+            int prod=nums[i];
+            int lcm=nums[i];
+            int gcd=nums[i];
+            for(int j=i+1;j<nums.length;j++){
+                prod=prod*nums[j];
+                gcd=findgcd(gcd,nums[j]);
+                lcm=lcmis(lcm,nums[j]);
+                if(prod>lcm*gcd){
+                    break;
+                }
+                if(prod==gcd*lcm){
+                    max=Math.max(max,j-i+1);
+                }
+            }
+        }
+        return max;
+    }
+    static int findgcd(int a,int b){
+        if(b==0){
+            return a;
+        }
+        return findgcd(b,a%b);
+    }
+    static int lcmis(int a,int b){
+        return ((a*b)/(findgcd(a,b)));
+    }
+}
