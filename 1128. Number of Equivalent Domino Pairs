@@ -1,0 +1,20 @@
+class Solution {
+    public int numEquivDominoPairs(int[][] dominoes) {
+        return find(dominoes);
+    }
+    static int find(int[][] arr){
+        int c=0;
+        int[] map=new int[100];
+        for(int i=0;i<arr.length;i++){
+          if(arr[i][0]>arr[i][1]) {
+            map[10*arr[i][0]+arr[i][1]]++;
+          }else{
+            map[10*arr[i][1]+arr[i][0]]++;
+          }
+        }
+        for(int val:map){
+            c+=(val-1)*val/2;
+        }
+        return c;
+    }
+}
