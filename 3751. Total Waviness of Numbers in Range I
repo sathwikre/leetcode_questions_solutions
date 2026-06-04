@@ -1,0 +1,23 @@
+class Solution {
+    public int totalWaviness(int n1, int n2) {
+        int sum=0;
+        for(int j=n1;j<=n2;j++){
+            int i=j;
+            if(i<100) continue;
+            int prev=i%10;
+            i=i/10;
+            int cur=i%10;
+            i=i/10;
+            while(i>0){
+                int next=i%10;
+                if((cur>prev&&cur>next)||(cur<prev&&cur<next)){
+                    sum++;
+                }
+                prev = cur;
+                cur = next;
+                i=i/10;
+            }
+        }
+        return sum;
+    }
+}
