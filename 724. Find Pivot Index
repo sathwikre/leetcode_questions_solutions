@@ -1,0 +1,25 @@
+class Solution {
+    public int pivotIndex(int[] nums) {
+        return find(nums);
+    }
+    static int find(int[] arr){
+        int[] left=new int[arr.length];
+        int[] right=new int[arr.length];
+        int s1=0;
+        for(int i=0;i<arr.length;i++){
+            s1+=arr[i];
+            left[i]=s1;
+        }
+        int s2=0;
+        for(int i=arr.length-1;i>=0;i--){
+            s2+=arr[i];
+            right[i]=s2;
+        }
+        for(int i=0;i<arr.length;i++){
+            if(left[i]==right[i]){
+                return i;
+            }
+        }
+        return -1;
+    }
+}
