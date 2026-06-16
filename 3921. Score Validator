@@ -1,0 +1,23 @@
+class Solution {
+    public int[] scoreValidator(String[] events) {
+        int c=0;
+        int s=0;
+        for(int i=0;i<events.length;i++){
+            String sb=events[i];
+            if(sb.equals("0")||sb.equals("1")||sb.equals("2")||sb.equals("3")||sb.equals("4")||sb.equals("5")||sb.equals("6")){
+                s+=Integer.parseInt(sb);
+            }
+            else if(sb.equals("W")){
+                c++;
+            }else if(sb.equals("WD")){
+                s++;
+            }else{
+                s++;
+            }
+            if(c>=10){
+                return new int[]{s,10};
+            }
+        }
+        return new int[]{s,c};
+    }
+}
