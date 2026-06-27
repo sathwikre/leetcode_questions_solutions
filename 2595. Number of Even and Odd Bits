@@ -1,0 +1,21 @@
+class Solution {
+    public int[] evenOddBit(int n) {
+        int e=0;
+        int o=0;
+        int i=0;
+        while(n>0){
+            int val=n&1;
+             i++;
+            if(val==1){
+                if(i%2==0){
+                    e++;
+                }else{
+                    o++;
+                }
+            }
+            n=n>>1;
+           
+        }
+        return new int[]{o,e};
+    }
+}
