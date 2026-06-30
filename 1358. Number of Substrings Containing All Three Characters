@@ -1,0 +1,18 @@
+class Solution {
+    public int numberOfSubstrings(String s) {
+        int c=0;
+        int la=-1,lb=-1,lc=-1;
+        for(int i=0;i<s.length();i++){
+           char ch=s.charAt(i);
+           if(ch=='a') la=i;
+           if(ch=='b') lb=i;
+           if(ch=='c') lc=i;
+           if(la!=-1&&lb!=-1&&lc!=-1){
+             int mini=Math.min(lc,Math.min(la,lb));
+             c+=mini+1;
+           }
+        }
+        return c;
+    }
+   
+}
