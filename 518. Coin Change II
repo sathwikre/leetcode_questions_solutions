@@ -1,0 +1,24 @@
+class Solution {
+    public int change(int amount, int[] coins) {
+        int[][] dp=new int[coins.length][amount+1];
+       for(int i=0;i<coins.length;i++){
+         Arrays.fill(dp[i],-1);
+       }
+        return find(amount,coins,coins.length-1,dp);
+    }
+    static int find(int t,int[] arr,int i,int[][] dp){
+        if(i==0){
+            if(t%arr[0]==0){
+                return 1;
+            }
+            return 0;
+        }
+        if(dp[i][t]!=-1) return dp[i][t];
+        int nottake=find(t,arr,i-1,dp);
+        int take=0;
+        if(arr[i]<=t){
+            take=find(t-arr[i],arr,i,dp);
+        }
+        return dp[i][t]=take+nottake;
+    }
+}
