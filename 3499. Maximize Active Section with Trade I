@@ -1,0 +1,49 @@
+class Solution {
+    public int maxActiveSectionsAfterTrade(String s) {
+
+        String t = "1" + s + "1";
+
+        ArrayList<Integer> arr = new ArrayList<>();
+        ArrayList<Character> type = new ArrayList<>();
+
+        int c = 1;
+        char ch = t.charAt(0);
+
+        for (int i = 1; i < t.length(); i++) {
+            if (t.charAt(i) == ch) {
+                c++;
+            } else {
+                arr.add(c);
+                type.add(ch);
+
+                ch = t.charAt(i);
+                c = 1;
+            }
+        }
+        arr.add(c);
+        type.add(ch);
+
+        int ones = 0;
+        for (char x : s.toCharArray()) {
+            if (x == '1') ones++;
+        }
+
+        int ans = ones;
+
+        for (int i = 1; i < arr.size() - 1; i++) {
+
+            if (type.get(i) == '1'
+                    && type.get(i - 1) == '0'
+                    && type.get(i + 1) == '0') {
+
+                int gain =
+                        arr.get(i - 1)
+                                + arr.get(i + 1);
+
+                ans = Math.max(ans, ones + gain);
+            }
+        }
+
+        return ans;
+    }
+}
