@@ -1,0 +1,22 @@
+import java.math.BigInteger;
+class Solution {
+    public String removeDigit(String s, char d) {
+        String max="0";
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)==d){
+                String f=s.substring(0,i);
+                String sec="";
+                if(i+1<s.length()){
+                    sec=s.substring(i+1,s.length());
+                }
+               String temp=f+sec;
+               BigInteger a = new BigInteger(temp);
+               BigInteger b = new BigInteger(max);
+               if(a.compareTo(b)>0) {
+                max=temp;
+               }
+            }
+        }
+        return max;
+    }
+}
