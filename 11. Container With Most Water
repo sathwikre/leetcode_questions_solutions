@@ -1,0 +1,18 @@
+class Solution {
+    public int maxArea(int[] height) {
+        return find(height);
+    }
+    static int find(int[] arr){
+        int i=0;int j=arr.length-1;
+        int max=0;
+        while(i<=j){
+            max=Math.max(max,Math.min(arr[i],arr[j])*(j-i));
+            if(arr[i]<arr[j]){
+                i++;
+            }else{
+                j--;
+            }
+        }
+        return max;
+    }
+}
