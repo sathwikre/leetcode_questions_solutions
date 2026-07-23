@@ -1,0 +1,20 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        int[][][] dp=new int[prices.length][2][3];
+        for(int[][] arr:dp){
+           for (int[] row : arr) {
+                Arrays.fill(row, -1);
+            }
+        }
+        return find(0,1,prices,dp,2);
+    }
+    static int find(int i,int b,int[] arr,int[][][] dp,int t){
+        if(i>=arr.length||t==0) return 0;
+        if(dp[i][b][t]!=-1) return dp[i][b][t];
+        if(b==1&&t>0){
+            return dp[i][b][t]=Math.max(-arr[i]+find(i+1,0,arr,dp,t),0+find(i+1,1,arr,dp,t));
+        }else{
+            return dp[i][b][t]=Math.max(arr[i]+find(i+1,1,arr,dp,t-1),0+find(i+1,0,arr,dp,t));
+        }
+    }
+}
