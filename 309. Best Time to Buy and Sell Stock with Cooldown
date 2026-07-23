@@ -1,0 +1,18 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        int[][] dp=new int[prices.length][2];
+        for(int[] arr:dp){
+            Arrays.fill(arr,-1);
+        }
+        return find(0,1,prices,dp);
+    }
+    static int find(int i,int b,int[] arr,int[][] dp){
+        if(i>=arr.length) return 0;
+        if(dp[i][b]!=-1) return dp[i][b];
+        if(b==1){
+            return dp[i][b]=Math.max(-arr[i]+find(i+1,0,arr,dp),0+find(i+1,1,arr,dp));
+        }else{
+            return dp[i][b]=Math.max(arr[i]+find(i+2,1,arr,dp),0+find(i+1,0,arr,dp));
+        }
+    }
+}
