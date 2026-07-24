@@ -1,0 +1,17 @@
+class Solution {
+    public int uniqueXorTriplets(int[] nums) {
+        int n=nums.length;
+        if(n<=2) return n;
+        int c=0;
+        int max=0;
+        while(n>0){
+            int b=n&1;
+            c++;
+            if(b==1){
+                max=c;
+            }
+            n=n>>1;
+        }
+        return 1<<max;
+    }
+}
