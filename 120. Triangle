@@ -1,0 +1,35 @@
+class Solution {
+    public int minimumTotal(List<List<Integer>> triangle) {
+        int[][] dp=new int[triangle.size()][ triangle.size()];
+        for(int[] arr:dp){
+            Arrays.fill(arr,-1);
+        }
+        return find1(triangle,dp);
+    }
+    static int find(int i,int j,List<List<Integer>> arr,int[][] dp){
+         if(i==arr.size()-1)
+        {
+            return arr.get(i).get(j);
+        }
+        if(dp[i][j]!=-1){
+            return dp[i][j];
+        }
+        int left=arr.get(i).get(j)+find(i+1,j,arr,dp);
+        int right=arr.get(i).get(j)+find(i+1,j+1,arr,dp);
+        return dp[i][j]=Math.min(left,right);
+    }
+    static int find1(List<List<Integer>> arr,int[][] dp){
+        int n=arr.size()-1;
+        for(int i=0;i<arr.size();i++){
+            dp[n][i]=arr.get(n).get(i);
+        }
+        for(int i=n-1;i>=0;i--){
+            for(int j=i;j>=0;j--){
+                int left=arr.get(i).get(j)+dp[i+1][j];
+                int right=arr.get(i).get(j)+dp[i+1][j+1];
+                dp[i][j]=Math.min(left,right);
+            }
+        }
+        return dp[0][0];
+    }
+}
