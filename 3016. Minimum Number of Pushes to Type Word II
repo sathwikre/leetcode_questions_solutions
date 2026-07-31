@@ -1,0 +1,21 @@
+class Solution {
+    public int minimumPushes(String word) {
+        Map<Character, Integer> map = new HashMap<>();
+        for(char ch:word.toCharArray()){
+            map.put(ch,map.getOrDefault(ch,0)+1);
+        }
+       List<Integer> frequencies = map.values().stream()
+            .sorted(Comparator.reverseOrder())
+            .collect(Collectors.toList());
+        int flag=0;
+       
+        int sum=0;
+        for(int val:frequencies){
+          
+            int mul=1+(flag)/8;
+            sum+=val*mul;
+            flag++;
+        }
+        return sum;
+    }
+}
