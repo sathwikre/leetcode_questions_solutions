@@ -1,0 +1,15 @@
+class Solution {
+    public boolean haveConflict(String[] event1, String[] event2) {
+        int s1 = toMinutes(event1[0]);
+        int e1 = toMinutes(event1[1]);
+        int s2 = toMinutes(event2[0]);
+        int e2 = toMinutes(event2[1]);
+
+        return s1 <= e2 && s2 <= e1;
+    }
+
+    private int toMinutes(String time) {
+        String[] parts = time.split(":");
+        return Integer.parseInt(parts[0]) * 60 + Integer.parseInt(parts[1]);
+    }
+}
