@@ -1,0 +1,22 @@
+class Solution {
+    public int trap(int[] height) {
+       int[] pref=new int[height.length];
+       int[] suff=new int[height.length];
+       suff[0]=height[0];
+       for(int i=1;i<height.length;i++){
+            suff[i]=Math.max(suff[i-1],height[i]);
+       }
+       pref[height.length-1]=height[height.length-1];
+       for(int i=height.length-2;i>=0;i--){
+          pref[i]=Math.max(height[i],pref[i+1]);
+       }
+       int max=0;
+       for(int i=0;i<height.length;i++){
+            int left=suff[i],right=pref[i];
+            if(height[i]<left&&height[i]<right){
+                max+=Math.min(left,right)-height[i];
+            }
+       }
+       return max;
+    }
+}
