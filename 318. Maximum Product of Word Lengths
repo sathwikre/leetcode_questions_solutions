@@ -1,0 +1,35 @@
+class Solution {
+    public int maxProduct(String[] words) {
+
+        int max = 0;
+
+        for (int i = 0; i < words.length; i++) {
+
+            for (int j = i + 1; j < words.length; j++) {
+
+                int[] hash = new int[26];
+
+                for (char ch : words[i].toCharArray()) {
+                    hash[ch - 'a'] = 1;
+                }
+
+                boolean flag = false;
+
+                for (char ch : words[j].toCharArray()) {
+
+                    if (hash[ch - 'a'] == 1) {
+                        flag = true;
+                        break;
+                    }
+                }
+
+                if (!flag) {
+                    max = Math.max(max,
+                            words[i].length() * words[j].length());
+                }
+            }
+        }
+
+        return max;
+    }
+}
