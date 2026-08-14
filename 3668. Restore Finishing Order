@@ -1,0 +1,18 @@
+class Solution {
+    public int[] recoverOrder(int[] order, int[] friends) {
+        int[] ans=new int[friends.length];
+        ArrayList<Integer> map=new ArrayList<>();
+        for(int val:friends){
+            map.add(val);
+        }
+        int i=1;
+        for(int val:order){
+            if(map.contains(val)){
+                ans[i-1]=val;
+                i++;
+            }
+           
+        }
+        return ans;
+    }
+}
