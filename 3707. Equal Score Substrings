@@ -1,0 +1,17 @@
+class Solution {
+    public boolean scoreBalance(String s) {
+        int sum=0;
+        for(char ch:s.toCharArray()){
+            sum+=ch-'a'+1;
+        }
+        int s2=0;
+        for(char ch:s.toCharArray()){
+            s2+=ch-'a'+1;
+            sum-=(ch-'a'+1);
+            if(s2==sum){
+                return true;
+            }
+        }
+        return false;
+    }
+}
