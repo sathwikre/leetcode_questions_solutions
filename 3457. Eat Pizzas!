@@ -1,0 +1,17 @@
+class Solution {
+    public long maxWeight(int[] pizzas) {
+        Arrays.sort(pizzas);
+        long sum=0;int k=pizzas.length-1;
+        int days=pizzas.length/4;
+
+        for(int i=1;i<=days;i=i+2){
+            sum+=pizzas[k--];
+        }
+        k--;
+        for(int i=2;i<=days;i=i+2){
+            sum+=pizzas[k];
+            k=k-2;
+        }
+        return sum;
+    }
+}
