@@ -1,0 +1,20 @@
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        return find(nums,k);
+    }
+static int find(int[] arr, int k){
+    int c= 0;
+    for (int r = 0; r < arr.length; r++) {
+        int sum=0;
+       for(int j=r;j<arr.length;j++){
+            sum+=arr[j];
+            if(sum==k)
+            {
+                c++;
+            }
+       }
+    }
+    return c;
+}
+
+}
