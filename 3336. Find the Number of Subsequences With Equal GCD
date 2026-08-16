@@ -1,0 +1,35 @@
+class Solution {
+    static int mod=10_000_000_07;
+    public int subsequencePairCount(int[] nums) {
+        int[][][] dp=new int[nums.length+1][201][201];
+        for(int[][] i:dp){
+            for(int[] d:i){
+                Arrays.fill(d,-1);
+
+            }
+        }
+        return find(dp,0,0,0,nums);
+    }
+    static int gcd(int a,int b){
+        if(a==0) return b;
+        return gcd(b%a,a);
+    }
+    static int find(int[][][] dp,int i,int g1,int g2,int[] arr){
+        if(i==arr.length){
+            if(g1>0&&g2>0){
+
+            
+            if(g1==g2){
+                return 1;
+            }
+            }
+            return 0;
+        }
+        if(dp[i][g1][g2]!=-1) return dp[i][g1][g2];
+        long take=0;
+        take+=(find(dp,i+1,g1,g2,arr))%mod;
+        take+=(find(dp,i+1,gcd(g1,arr[i]),g2,arr))%mod;
+        take+=(find(dp,i+1,g1,gcd(g2,arr[i]),arr))%mod;
+        return dp[i][g1][g2]=(int)((take)%mod);
+    }
+}
