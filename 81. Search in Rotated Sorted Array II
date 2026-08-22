@@ -1,0 +1,12 @@
+class Solution {
+    public boolean search(int[] nums, int target) {
+        ArrayList<Integer> arr=new ArrayList<>();
+        for(int n:nums){
+            if(!arr.contains(n)){
+                arr.add(n);
+            }
+        }
+        if(arr.contains(target)) return true;
+        return false;
+    }
+}
