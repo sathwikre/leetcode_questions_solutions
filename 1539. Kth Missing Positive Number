@@ -1,0 +1,16 @@
+class Solution {
+    public int findKthPositive(int[] arr, int k) {
+        int max=arr[arr.length-1];
+        ArrayList<Integer> a1=new ArrayList<>();
+        ArrayList<Integer> a2=new ArrayList<>();
+        for(int n:arr){
+            a1.add(n);
+        }
+        for(int i=1;i<=10000;i++){
+            if(!a1.contains(i)){
+                a2.add(i);
+            }
+        }
+        return a2.get(k-1);
+    }
+}
