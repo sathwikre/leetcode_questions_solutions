@@ -1,0 +1,27 @@
+class Solution {
+    public int[] topoSort(int v, List<List<Integer>> adj) {
+        int[] vis=new int[v];
+        Stack<Integer> st=new Stack<>();
+        for(int i=0;i<v;i++){
+            if(vis[i]==0){
+                dfs(i,adj,st,vis);
+            }
+        }
+        int[] ans=new int[v];
+        int i=0;
+        while(!st.isEmpty()){
+            ans[i++]=st.peek();
+            st.pop();
+        }
+        return ans;
+    }
+    static void dfs(int v, List<List<Integer>> adj,Stack<Integer> st,int[] vis){
+        vis[v]=1;
+        for(int it:adj.get(v)){
+            if(vis[it]==0){
+                dfs(it,adj,st,vis);
+            }
+        }
+        st.push(v);
+    }
+}
