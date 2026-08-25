@@ -1,0 +1,18 @@
+class Solution {
+    public boolean carPooling(int[][] trips, int capacity) {
+        return find(trips,capacity);
+    }
+    static boolean find(int[][] arr,int c){
+        int[] cc=new int[1001];
+        for(int[] a:arr){
+            cc[a[1]]+=a[0];
+            cc[a[2]]-=a[0];
+        }
+        int sum=0;
+        for(int i:cc){
+            sum+=i;
+            if(sum>c) return false;
+        }
+        return true;
+    }
+}
