@@ -1,0 +1,27 @@
+class Solution {
+    int mod = 1000000007;
+
+    public int xorAfterQueries(int[] nums, int[][] queries) {
+        for (int[] a : queries) {
+            int l = a[0];
+            int r = a[1];
+            int k = a[2];
+            int v = a[3];
+
+            int i = l;
+
+            while (i <= r) {
+                nums[i] = (int) ((long) nums[i] * v % mod);
+                i += k;
+            }
+        }
+
+        int x = 0;
+
+        for (int i : nums) {
+            x ^= i;
+        }
+
+        return x;
+    }
+}
