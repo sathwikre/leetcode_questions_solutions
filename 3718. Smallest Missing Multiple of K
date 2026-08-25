@@ -1,0 +1,15 @@
+class Solution {
+    public int missingMultiple(int[] nums, int k) {
+        ArrayList<Integer> arr=new ArrayList<>();
+        for(int n:nums){
+            arr.add(n);
+        }
+        int i=k;
+        while(true){
+            if(!arr.contains(k)){
+                return k;
+            }
+            k=k+i;
+        }
+    }
+}
