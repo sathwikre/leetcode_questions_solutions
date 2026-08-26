@@ -1,0 +1,49 @@
+class Solution {
+
+    public String shortestBeautifulSubstring(String s, int k) {
+
+        if (k == 0) return "";
+
+        int l = 0, r = 0;
+        String ans = "";
+        int c = 0;
+        int n = s.length();
+
+        while (r < n) {
+
+            char ch = s.charAt(r);
+
+            if (ch == '1') {
+                c++;
+            }
+
+            while (l <= r && c > k) {
+                if (s.charAt(l) == '1') {
+                    c--;
+                }
+                l++;
+            }
+
+            if (c == k) {
+
+                while (l < r && s.charAt(l) == '0') {
+                    l++;
+                }
+
+                String current = s.substring(l, r + 1);
+
+                if (ans.equals("")
+                        || current.length() < ans.length()
+                        || (current.length() == ans.length()
+                            && current.compareTo(ans) < 0)) {
+
+                    ans = current;
+                }
+            }
+
+            r++;
+        }
+
+        return ans;
+    }
+}
