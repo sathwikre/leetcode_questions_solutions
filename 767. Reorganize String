@@ -1,0 +1,58 @@
+class Solution {
+    public String reorganizeString(String s) {
+
+        char[] ch = new char[s.length()];
+        int[] arr = new int[26];
+        for (char c : s.toCharArray()) {
+            arr[c - 'a']++;
+        }
+
+        int max = 0;
+        char maxChar = '0';
+
+        for (int i = 0; i < 26; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+                maxChar = (char) ('a' + i);
+            }
+        }
+
+        if (max > (s.length() + 1) / 2) {
+            return "";
+        }
+
+        int index = 0;
+
+        while (arr[maxChar - 'a'] > 0) {
+            ch[index] = maxChar;
+            arr[maxChar - 'a']--;
+
+            index += 2;
+
+            if (index >= s.length()) {
+                index = 1;
+            }
+        }
+        for (int i = 0; i < 26; i++) {
+
+            char current = (char) ('a' + i);
+
+            if (current == maxChar) {
+                continue;
+            }
+
+            while (arr[i] > 0) {
+                ch[index] = current;
+                arr[i]--;
+
+                index += 2;
+
+                if (index >= s.length()) {
+                    index = 1;
+                }
+            }
+        }
+
+        return new String(ch);
+    }
+}
