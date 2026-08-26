@@ -1,0 +1,22 @@
+class Solution {
+   static boolean[] vis;
+    public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        vis=new boolean[rooms.size()];
+        vis[0]=true;
+        find(rooms,0);
+        for(boolean b:vis){
+            if(!b){
+                return false;
+            }
+        }
+        return true;
+    }
+    static void find(List<List<Integer>> rooms,int i){
+        for(int j:rooms.get(i)){
+            if(!vis[j]){
+                vis[j]=true;
+                find(rooms,j);
+            }
+        }
+    }
+}
