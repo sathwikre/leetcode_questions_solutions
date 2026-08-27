@@ -1,0 +1,35 @@
+import java.util.Arrays;
+
+class Solution {
+
+    int[] values;
+    int[] dp;
+
+    public int deleteAndEarn(int[] nums) {
+
+        values = new int[10001];
+        dp = new int[10001];
+
+        Arrays.fill(dp, -1);
+
+        for (int num : nums) {
+            values[num] += num;
+        }
+
+        return solve(10000);
+    }
+
+    int solve(int i) {
+
+        if (i <= 0)
+            return 0;
+
+        if (dp[i] != -1)
+            return dp[i];
+
+        int take = values[i] + solve(i - 2);
+        int skip = solve(i - 1);
+
+        return dp[i] = Math.max(take, skip);
+    }
+}
