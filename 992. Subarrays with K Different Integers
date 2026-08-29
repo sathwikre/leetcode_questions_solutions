@@ -1,0 +1,26 @@
+class Solution {
+    public int subarraysWithKDistinct(int[] nums, int k) {
+      return find(nums,k)-find(nums,k-1);
+    }
+    static int find(int[] arr,int k){
+        int c=0;
+        int r=0;int l=0;
+        HashMap<Integer,Integer> map=new HashMap<>();
+        while(r<arr.length){
+            map.put(arr[r],map.getOrDefault(arr[r],0)+1);
+            while(map.size()>k){
+               map.put(arr[l],map.getOrDefault(arr[l],0)-1);
+               if(map.get(arr[l])==0){
+                map.remove(arr[l]);
+               }
+               l++;
+            }
+            if(map.size()<=k){
+                c+=(r-l+1);
+            }
+            r++;
+        }
+        return c;
+    }
+  
+}
