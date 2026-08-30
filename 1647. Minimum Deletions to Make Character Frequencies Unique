@@ -1,0 +1,31 @@
+class Solution {
+    public int minDeletions(String s) {
+        HashMap<Character,Integer> map=new HashMap<>();
+        for(char ch:s.toCharArray()){
+            map.put(ch,map.getOrDefault(ch,0)+1);
+        }
+        List<Integer> l=new ArrayList<>();
+        for(Map.Entry<Character,Integer> m:map.entrySet()){
+            l.add(m.getValue());
+        }
+        Collections.sort(l);
+        int sum=0;
+        HashSet<Integer> set=new HashSet<>();
+       int i = l.size() - 1;
+
+while (i >= 0) {
+    int frequency = l.get(i);
+
+    while (frequency > 0 && set.contains(frequency)) {
+        frequency--;
+        sum++;
+    }
+
+    set.add(frequency);
+
+    i--;
+}
+      return sum;
+    }
+    
+}
