@@ -1,0 +1,29 @@
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+
+        if (head == null || head.next == null)
+            return head;
+
+        List<ListNode> arr = new ArrayList<>();
+
+        ListNode node = head;
+
+        while (node != null) {
+            arr.add(node);
+            node = node.next;
+        }
+
+        for (int i = 0; i < arr.size() - 1; i += 2) {
+            ListNode temp = arr.get(i);
+            arr.set(i, arr.get(i + 1));
+            arr.set(i + 1, temp);
+        }
+        for (int i = 0; i < arr.size() - 1; i++) {
+            arr.get(i).next = arr.get(i + 1);
+        }
+
+        arr.get(arr.size() - 1).next = null;
+
+        return arr.get(0);
+    }
+}
