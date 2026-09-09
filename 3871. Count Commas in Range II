@@ -1,0 +1,12 @@
+class Solution {
+    public long countCommas(long n) {
+        long ans=0;
+        long pow=1000;
+        while(pow<=n){
+            ans+=n-pow+1;
+            if(pow>n/1000) break;
+            pow=pow*1000;
+        }
+        return ans;
+    }
+}
