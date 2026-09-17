@@ -1,0 +1,33 @@
+class Solution {
+    public int findShortestSubArray(int[] nums) {
+        int[] first=new int[50000];
+        int[] last=new int[50000];
+        HashMap<Integer,Integer> map=new HashMap<>();
+        List<Integer> list=new ArrayList<>();
+        Arrays.fill(first,-1);
+        Arrays.fill(last,-1);
+        for(int j=0;j<nums.length;j++){
+            map.put(nums[j],map.getOrDefault(nums[j],0)+1);
+            if(first[nums[j]]==-1){
+                first[nums[j]]=j;
+            }
+            last[nums[j]]=j;
+        }
+        int max=0;
+        for(Map.Entry<Integer,Integer> m:map.entrySet()){
+            if(max<m.getValue()){
+                max=m.getValue();
+            }
+        }
+        for(Map.Entry<Integer,Integer> m:map.entrySet()){
+            if(m.getValue()==max){
+                list.add(m.getKey());
+            }
+        }
+        int min=Integer.MAX_VALUE;
+        for(int i=0;i<list.size();i++){
+            min=Math.min(min,last[list.get(i)]-first[list.get(i)]+1);
+        }
+        return min;
+    }
+}
