@@ -1,0 +1,29 @@
+class Solution {
+    public List<Integer> findValidElements(int[] arr) {
+        int max=Integer.MIN_VALUE;
+        List<Integer> ind=new ArrayList<>();
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>max){
+                max=arr[i];
+                if(!ind.contains(i)){
+                    ind.add(i);
+                }
+            }
+        }
+        max=Integer.MIN_VALUE;
+        for(int i=arr.length-1;i>=0;i--){
+            if(arr[i]>max){
+                max=arr[i];
+                if(!ind.contains(i)){
+                    ind.add(i);
+                }
+            }
+        }
+    Collections.sort(ind);
+    List<Integer> ans=new ArrayList<>();
+    for(int i=0;i<ind.size();i++){
+        ans.add(arr[ind.get(i)]);
+    }
+    return ans;
+    }
+}
