@@ -1,0 +1,36 @@
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+
+        int[] ans = new int[nums.length];
+
+        LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>();
+
+     
+        for (int n : nums) {
+            map.put(n, map.getOrDefault(n, 0) + 1);
+        }
+
+        int i = 0;
+
+        while (!map.isEmpty()) {
+
+            Iterator<Map.Entry<Integer, Integer>> it =
+                    map.entrySet().iterator();
+
+            while (it.hasNext()) {
+
+                Map.Entry<Integer, Integer> entry = it.next();
+
+                ans[i++] = entry.getKey();
+
+                if (entry.getValue() == 1) {
+                    it.remove();
+                } else {
+                    entry.setValue(entry.getValue() - 1);
+                }
+            }
+        }
+
+        return ans;
+    }
+}
