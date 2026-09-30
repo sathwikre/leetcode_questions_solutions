@@ -1,0 +1,21 @@
+class Solution {
+    public int maxDifference(String s) {
+        int[] fre=new int[26];
+        for(char ch:s.toCharArray()){
+            fre[ch-'a']++;
+        }
+        int maco=0;
+        int mine=Integer.MAX_VALUE;
+        for(int n:fre){
+            if(n!=0){
+                 if(n%2==0){
+                mine=Math.min(mine,n);
+            }else{
+                maco=Math.max(maco,n);
+            }
+            }
+           
+        }
+        return maco-mine;
+    }
+}
