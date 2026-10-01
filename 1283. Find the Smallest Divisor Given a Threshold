@@ -1,0 +1,32 @@
+class Solution {
+    public int smallestDivisor(int[] nums, int threshold) {
+        int min=Integer.MAX_VALUE;
+        int max=-1;
+        for(int n:nums){
+            max=Math.max(n,max);
+          
+        }
+        int ans=-1;
+        int low=1;
+        int high=max;
+        while(low<=high){
+            int m=low+(high-low)/2;
+            if(find(m,nums)<=threshold){
+                ans=m;
+                high=m-1;
+
+            }
+            else{
+                low=m+1;
+            }
+        }
+        return ans;
+    }
+    static int find(int n,int[] arr){
+        int ans=0;
+        for(int val:arr){
+            ans+=(int) Math.ceil((double)val/n);
+        }
+        return ans;
+    }
+}
