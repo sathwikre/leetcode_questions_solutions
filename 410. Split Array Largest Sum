@@ -1,0 +1,35 @@
+class Solution {
+    public int splitArray(int[] nums, int k) {
+        int sum=0;
+        int max=0;
+        for(int n:nums){
+            sum+=n;
+            max=Math.max(max,n);
+        }
+        int low=max;int high=sum;
+        int ans=-1;
+        while(low<=high){
+            int m=(low+high)/2;
+            if(func(m,nums)<=k){
+                ans=m;
+                high=m-1;
+            }else{
+                low=m+1;
+            }
+        }
+        return ans;
+    }
+    static int func(int m,int[] nums){
+        int n=1;
+        int sum=0;
+        for(int val:nums){
+            if(val+sum<=m){
+                sum+=val;
+            }else{
+                n++;
+                sum=val;
+            }
+        }
+        return n;
+    }
+}
