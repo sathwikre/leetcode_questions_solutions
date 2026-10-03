@@ -1,0 +1,20 @@
+class Solution {
+    public int[] fairCandySwap(int[] aliceSizes, int[] bobSizes) {
+        List<Integer> bob=new ArrayList<>();
+        int sa=0;int sb=0;
+        for(int i:bobSizes){
+            bob.add(i);
+            sb+=i;
+        }
+        for(int i:aliceSizes){
+            sa+=i;
+        }
+        int diff=(sa-sb)/2;
+        for(int i:aliceSizes){
+            if(bob.contains(i-diff)){
+                return new int[]{i,i-diff};
+            }
+        }
+        return new int[]{-1,-1};
+    }
+}
