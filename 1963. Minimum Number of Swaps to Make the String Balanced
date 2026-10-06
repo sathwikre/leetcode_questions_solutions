@@ -1,0 +1,18 @@
+class Solution {
+    public int minSwaps(String s) {
+        int swap=0;
+        int inc=0;
+        for(char ch:s.toCharArray()){
+            if(ch=='['){
+                inc++;
+            }else{
+               inc--;
+                if (inc < 0) {
+                    swap++;
+                    inc = 1;
+                }
+            }
+        }
+        return swap;
+    }
+}
