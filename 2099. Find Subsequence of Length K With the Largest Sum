@@ -1,0 +1,23 @@
+class Solution {
+    public int[] maxSubsequence(int[] nums, int k) {
+        List<int[]> list=new ArrayList<>();
+        for(int i=0;i<nums.length;i++){
+            list.add(new int[]{nums[i],i});
+        }
+        list.sort((a, b) -> Integer.compare(a[0], b[0]));
+        int i=nums.length-1;
+        List<int[]> ans=new ArrayList<>();
+        while(k>0){
+            ans.add(list.get(i));
+            i--;k--;
+        }
+        ans.sort((a, b) -> Integer.compare(a[1], b[1]));
+        int[] finl=new int[ans.size()];
+        int j=0;
+        for(int[] a:ans){
+            finl[j]=a[0];
+            j++;
+        }
+        return finl;
+    }
+}
