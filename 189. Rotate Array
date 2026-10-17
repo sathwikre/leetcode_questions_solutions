@@ -1,26 +1,24 @@
 class Solution {
-    public void rotate(int[] nums, int k) {
-       find(nums,k) ;
-
-    }
-    
-    static void  find(int[] arr,int k){
-         k=k%arr.length;
-        int[] ans=new int[arr.length];
-        for (int i = 0; i < k; i++) {
-            ans[i]=arr[arr.length-k+i];
-
-        }
-       int j=k;
-        int h=0;
-        while (j<arr.length){
-            ans[j]=arr[h];
-            j++;
-            h++;
-        }
+    public void rotate(int[] arr, int k) {
+        int[] ans=find(arr,k);
         for(int i=0;i<arr.length;i++){
             arr[i]=ans[i];
         }
-        
+    }
+    static int[] find(int[] arr,int k){
+        if(arr.length<=1) return arr;
+        k=k%arr.length;
+        int[] ans=new int[arr.length];
+        int i=arr.length-k;
+        int ind=0;
+        for(int j=i;j<arr.length;j++){
+            ans[ind]=arr[j];
+            ind++;
+        }
+        for(int j=0;j<i;j++){
+            ans[ind]=arr[j];
+            ind++;
+        }
+        return ans;
     }
 }
